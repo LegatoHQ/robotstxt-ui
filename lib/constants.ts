@@ -1,4 +1,4 @@
-import { arbitrum, goerli, hardhat, mainnet, optimism, polygon, sepolia } from '@wagmi/chains'
+import { arbitrum, goerli, hardhat, mainnet, optimism, polygon, polygonMumbai, sepolia } from '@wagmi/chains'
 
 // -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 // Application
@@ -45,4 +45,4 @@ sepolia.iconUrl = '/icons/NetworkEthereumTest.svg'
 
 export const ETH_CHAINS = [mainnet, polygon, optimism, arbitrum, goerli]
 export const ETH_CHAINS_PROD = [mainnet, polygon, optimism, arbitrum]
-export const ETH_CHAINS_TEST = [mainnet, polygon, optimism, arbitrum, goerli, sepolia, hardhat]
+export const ETH_CHAINS_TEST = [polygonMumbai,mainnet, polygon, optimism, arbitrum, goerli, sepolia, hardhat]

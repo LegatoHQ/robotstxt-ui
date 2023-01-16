@@ -24,9 +24,23 @@ import { FADE_DOWN_ANIMATION_VARIANTS } from '@/lib/design'
 import erc20TokenSymbolToAddress from '@/lib/erc20TokenSymbolToAddress'
 import CodeExample from '@/components/CodeExample'
 import LicenseExplainer from './LicenseExplainer'
+import { useContract, useContractWrite,usePrepareContractWrite } from 'wagmi'
 
 export default function Home() {
   const { DemoModal } = useDemoModal()
+  const {config,error,status} = usePrepareContractWrite({
+   address:'0xe74168069A4fD72b5732235b0E096c7a21E89b70',
+   functionName:'setDefaultLicense',
+   args:[{type:'address',value:'0x0000000000000000000000000000000000000000'},{type:'string',value:'test uri'}],
+  })
+  const licenser = useContractWrite(config);
+  const lic = useContract('0xe74168069A4fD72b5732235b0E096c7a21E89b70');
+
+  async function setLicense(){
+    await lic?.functions.setDefaultLicense("0x0000000000000000000000000000000000000000","test uri")
+    // await licenser.write();
+    // await licenser.write?.("0x0000000000000000000000000000000000000000","test uri")
+  }
   return (
     <>
       <Head />
@@ -57,6 +71,11 @@ export default function Home() {
               variants={FADE_DOWN_ANIMATION_VARIANTS}>
               <Balancer>Robots.xyz</Balancer>
             </motion.h1>
+              <button
+              onClick={setLicense}
+               className="border-2 rounded border-black p-2 bg-red-50 flex items-center justify-center space-x-2">
+                Try it?
+                </button>
             <motion.p className="mt-6 text-center text-gray-500 dark:text-gray-200 md:text-xl" variants={FADE_DOWN_ANIMATION_VARIANTS}>
               {/* <Balancer className="text-xl">{SITE_DESCRIPTION}</Balancer> */}
               <Balancer className="p-2 text-xl">

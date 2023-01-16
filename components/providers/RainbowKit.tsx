@@ -16,13 +16,13 @@ interface Props {
 export function RainbowKit(props: Props) {
   const CHAINS = process.env.NODE_ENV === 'production' ? ETH_CHAINS_PROD : ETH_CHAINS_TEST
   const { chains, provider } = configureChains(CHAINS, [
-    alchemyProvider({
-      apiKey: process.env.NEXT_PUBLIC_ALCHEMY_API_KEY as string,
-    }),
+    // alchemyProvider({
+    //   apiKey: process.env.NEXT_PUBLIC_ALCHEMY_API_KEY as string,
+    // }),
     jsonRpcProvider({
       rpc: () => ({
         chainId: [11155111],
-        http: 'https://sepolia.infura.io/v3/',
+        http: 'https://crimson-dawn-layer.matic-testnet.discover.quiknode.pro/2f96338b3a272ff0801a885469489d340d782714',
       }),
     }),
     jsonRpcProvider({
