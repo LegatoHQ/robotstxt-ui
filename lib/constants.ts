@@ -5,9 +5,9 @@ import { arbitrum, goerli, hardhat, mainnet, optimism, polygon, sepolia } from '
 // -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 export const SITE_CANONICAL = 'https://turbo.district.dev'
 export const SITE_EMOJI = '⚡'
-export const SITE_NAME = 'TurboETH'
-export const SITE_TITLE = 'TurboETH - Web3 App Template'
-export const SITE_DESCRIPTION = 'Web3 App Template built using Next.js, TailwindCSS and RainbowKit.'
+export const SITE_NAME = 'robotstxt.xyz'
+export const SITE_TITLE = 'robotstxt.xyz - default usage licenses for eth addresses'
+export const SITE_DESCRIPTION = 'Declare a default license for any eth address you own.'
 export const SOCIAL_TWITTER = 'KamesGeraghty'
 export const SOCIAL_GITHUB = 'turbo-eth/template-web3-app'
 

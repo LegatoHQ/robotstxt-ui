@@ -25,5 +25,10 @@
   "jest.jestCommandLine": "jest",
   "[typescriptreact]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "workbench.colorCustomizations": {
+    "activityBar.background": "#26310E",
+    "titleBar.activeBackground": "#354514",
+    "titleBar.activeForeground": "#F9FBF3"
   }
 }

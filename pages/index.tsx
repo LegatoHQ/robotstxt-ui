@@ -1,3 +1,4 @@
+/* eslint-disable tailwindcss/no-custom-classname */
 // @ts-nocheck
 import { WalletAddress, WalletNonce } from '@turbo-eth/core-wagmi'
 import { ERC20Decimals, ERC20Name, ERC20Symbol } from '@turbo-eth/erc20-wagmi'
@@ -21,6 +22,8 @@ import WalletConnect from '@/components/WalletConnect'
 import { DEPLOY_URL, SITE_DESCRIPTION } from '@/lib/constants'
 import { FADE_DOWN_ANIMATION_VARIANTS } from '@/lib/design'
 import erc20TokenSymbolToAddress from '@/lib/erc20TokenSymbolToAddress'
+import CodeExample from '@/components/CodeExample'
+import LicenseExplainer from './LicenseExplainer'
 
 export default function Home() {
   const { DemoModal } = useDemoModal()
@@ -47,33 +50,27 @@ export default function Home() {
             {/* <h3 className="text-6xl font-normal">{SITE_EMOJI}</h3> */}
             <img src="/logo-fill.png" alt="Turbo ETH" className="mx-auto my-10 h-20 w-20" />
             <motion.h1
-              className="font-display bg-gradient-to-br from-black to-stone-500 bg-clip-text text-center text-4xl font-bold tracking-[-0.02em] text-transparent drop-shadow-sm dark:from-stone-100 dark:to-yellow-200 md:text-8xl md:leading-[6rem]"
+              className="font-display bg-gradient-to-br from-black to-stone-500 bg-clip-text text-center text-4xl 
+              font-bold tracking-[-0.02em] text-transparent 
+              drop-shadow-sm dark:from-stone-100 dark:to-yellow-200 
+              md:text-6xl md:leading-[6rem]"
               variants={FADE_DOWN_ANIMATION_VARIANTS}>
-              <Balancer>Build Web3 In Turbo Mode</Balancer>
+              <Balancer>Robots.xyz</Balancer>
             </motion.h1>
             <motion.p className="mt-6 text-center text-gray-500 dark:text-gray-200 md:text-xl" variants={FADE_DOWN_ANIMATION_VARIANTS}>
-              <Balancer className="text-xl">{SITE_DESCRIPTION}</Balancer>
+              {/* <Balancer className="text-xl">{SITE_DESCRIPTION}</Balancer> */}
+              <Balancer className="p-2 text-xl">
+                A robots.txt file tells search engine crawlers which URLs the crawler can access on your site.
+              </Balancer>
+              <Balancer className="text-xl">
+                In web3, we can let aggregators and other companies know what they can and cannot do with our on-chain hosted contract and related
+                images, music, and other content.
+              </Balancer>
               {/* <Balancer>An opinionated collection of components, hooks, and utilities for your Next.js project.</Balancer> */}
             </motion.p>
-            <motion.div className="mx-auto mt-6 flex items-center justify-center space-x-5" variants={FADE_DOWN_ANIMATION_VARIANTS}>
-              <a
-                className="group flex max-w-fit items-center justify-center space-x-2 rounded-full border border-black bg-black px-5 py-2 text-sm text-white transition-colors hover:bg-white hover:text-black"
-                href={DEPLOY_URL}
-                target="_blank"
-                rel="noopener noreferrer">
-                <svg className="h-4 w-4 group-hover:text-black" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M12 4L20 20H4L12 4Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-                <p>Deploy to Vercel</p>
-              </a>
-              <a
-                className="flex max-w-fit items-center justify-center space-x-2 rounded-full border border-gray-300 bg-white px-5 py-2 text-sm text-gray-600 shadow-md transition-colors hover:border-gray-800"
-                href="https://github.com/turbo-eth/template-web3-app"
-                target="_blank"
-                rel="noopener noreferrer">
-                <FaGithub />
-                <p>Star on GitHub</p>
-              </a>
+              <LicenseExplainer/>
+            <motion.div className="mx-auto mt-6 flex justify-center space-x-5 text-left" variants={FADE_DOWN_ANIMATION_VARIANTS}>
+              <CodeExample/>
             </motion.div>
           </motion.div>
 
