@@ -64,7 +64,7 @@ export const WriteLicense = () => {
         <Combobox className="bg-transparent">
           <ComboboxInput
             className="w-full rounded-full border-2 border-[#9146FF] px-6 py-4 shadow-xl  dark:bg-white/10 dark:text-white dark:placeholder:text-gray-100"
-            onChange={(e) => setAddress(e.currentTarget.value)}
+            onChange={(e) => setUri(e.currentTarget.value)}
           />
           <ComboboxPopover portal={false} className="rounded-2xl border-none" style={{ background: 'transparent' }}>
             <ComboboxList className="rounded-2xl border-none dark:bg-white/10">
