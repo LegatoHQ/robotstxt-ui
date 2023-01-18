@@ -1,14 +1,13 @@
 import React from 'react'
+
 import ReactMarkdown from 'react-markdown'
-import remarkGfm from "remark-gfm";
+import remarkGfm from 'remark-gfm'
 
 export default function LicenseExplainer() {
   return (
-    <div className='text-left '>
-      <ReactMarkdown className='reactMarkDown'  remarkPlugins={[remarkGfm]}>
-        {`
-       
-       There are six variants of the CantBeEvil license:
+    <div className="rounded-xl bg-black bg-opacity-40 p-8 px-12 text-left">
+      <ReactMarkdown className="reactMarkDown" remarkPlugins={[remarkGfm]}>
+        {`There are six variants of the CantBeEvil license:
 
 1.	[CC0 (“PUBLIC”)](https://arweave.net/zmc1WTspIhFyVY82bwfAIcIExLFH5lUcHHUN0wXg4W8/0) – All copyrights are waived under the terms of CC0 1.0 Universal developed by Creative Commons.
 2.	[Exclusive Commercial Rights with No Creator Retention (“EXCLUSIVE”)](https://arweave.net/zmc1WTspIhFyVY82bwfAIcIExLFH5lUcHHUN0wXg4W8/1) – Full exclusive commercial rights granted, with no hate speech termination.  Creator does not retain any exploitation rights.

@@ -6,10 +6,7 @@
   },
   "editor.defaultFormatter": "dbaeumer.vscode-eslint",
   "editor.formatOnSave": true,
-  "editor.codeActionsOnSave": [
-    "source.addMissingImports",
-    "source.fixAll.eslint"
-  ],
+  "editor.codeActionsOnSave": ["source.addMissingImports", "source.fixAll.eslint"],
   "eslint.validate": ["typescript", "javascript", "javascriptreact"],
   "jest.autoRun": {
     "watch": true, // Start the jest with the watch flag
@@ -25,10 +22,5 @@
   "jest.jestCommandLine": "jest",
   "[typescriptreact]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "workbench.colorCustomizations": {
-    "activityBar.background": "#26310E",
-    "titleBar.activeBackground": "#354514",
-    "titleBar.activeForeground": "#F9FBF3"
   }
 }

@@ -1,46 +1,25 @@
 /* eslint-disable tailwindcss/no-custom-classname */
 // @ts-nocheck
-import { WalletAddress, WalletNonce } from '@turbo-eth/core-wagmi'
-import { ERC20Decimals, ERC20Name, ERC20Symbol } from '@turbo-eth/erc20-wagmi'
-import { ERC721Image, ERC721Name } from '@turbo-eth/erc721-wagmi'
-import { motion } from 'framer-motion'
-import Image from 'next/image'
-import Link from 'next/link'
-import { FaGithub } from 'react-icons/fa'
-import Balancer from 'react-wrap-balancer'
+import { useState } from 'react'
 
-import { BranchColorMode } from '@/components/branch/BranchColorMode'
-import { BranchIsAuthenticated } from '@/components/branch/BranchIsAuthenticated'
-import { BranchIsWalletConnected } from '@/components/branch/BranchIsWalletConnected'
-import Card from '@/components/home/card'
-import ComponentGrid from '@/components/home/component-grid'
+import { motion } from 'framer-motion'
+import Balancer from 'react-wrap-balancer'
+import { useContract, useContractWrite, usePrepareContractWrite } from 'wagmi'
+
+import CodeExample from '@/components/CodeExample'
 import { useDemoModal } from '@/components/home/demo-modal'
 import { Head } from '@/components/layout/Head'
-import ButtonSIWELogin from '@/components/siwe/ButtonSIWELogin'
-import ButtonSIWELogout from '@/components/siwe/ButtonSIWELogout'
-import WalletConnect from '@/components/WalletConnect'
-import { DEPLOY_URL, SITE_DESCRIPTION } from '@/lib/constants'
+import { Read } from '@/components/Read'
+import { ReadWriteToggle } from '@/components/ReadWriteToggle'
+import { WriteLicense } from '@/components/WriteLicense'
 import { FADE_DOWN_ANIMATION_VARIANTS } from '@/lib/design'
-import erc20TokenSymbolToAddress from '@/lib/erc20TokenSymbolToAddress'
-import CodeExample from '@/components/CodeExample'
+
 import LicenseExplainer from './LicenseExplainer'
-import { useContract, useContractWrite,usePrepareContractWrite } from 'wagmi'
 
 export default function Home() {
   const { DemoModal } = useDemoModal()
-  const {config,error,status} = usePrepareContractWrite({
-   address:'0xe74168069A4fD72b5732235b0E096c7a21E89b70',
-   functionName:'setDefaultLicense',
-   args:[{type:'address',value:'0x0000000000000000000000000000000000000000'},{type:'string',value:'test uri'}],
-  })
-  const licenser = useContractWrite(config);
-  const lic = useContract('0xe74168069A4fD72b5732235b0E096c7a21E89b70');
+  const [active, setActive] = useState<'read' | 'write'>('read')
 
-  async function setLicense(){
-    await lic?.functions.setDefaultLicense("0x0000000000000000000000000000000000000000","test uri")
-    // await licenser.write();
-    // await licenser.write?.("0x0000000000000000000000000000000000000000","test uri")
-  }
   return (
     <>
       <Head />
@@ -71,29 +50,26 @@ export default function Home() {
               variants={FADE_DOWN_ANIMATION_VARIANTS}>
               <Balancer>Robots.xyz</Balancer>
             </motion.h1>
-              <button
-              onClick={setLicense}
-               className="border-2 rounded border-black p-2 bg-red-50 flex items-center justify-center space-x-2">
-                Try it?
-                </button>
-            <motion.p className="mt-6 text-center text-gray-500 dark:text-gray-200 md:text-xl" variants={FADE_DOWN_ANIMATION_VARIANTS}>
+            <div className="flex flex-col gap-4">
+              <ReadWriteToggle className="mx-auto" onChange={setActive} active={active} />
+              {active === 'write' && <WriteLicense />}
+              {active === 'read' && <Read />}
+            </div>
+            <motion.p className="mt-6 text-left text-gray-500 dark:text-gray-200 md:text-xl" variants={FADE_DOWN_ANIMATION_VARIANTS}>
               {/* <Balancer className="text-xl">{SITE_DESCRIPTION}</Balancer> */}
-              <Balancer className="p-2 text-xl">
-                A robots.txt file tells search engine crawlers which URLs the crawler can access on your site.
-              </Balancer>
-              <Balancer className="text-xl">
+              <Balancer className="text-xl">A robots.txt file tells search engine crawlers which URLs the crawler can access on your site.</Balancer>
+              <Balancer className="py-3 text-xl">
                 In web3, we can let aggregators and other companies know what they can and cannot do with our on-chain hosted contract and related
                 images, music, and other content.
               </Balancer>
-              {/* <Balancer>An opinionated collection of components, hooks, and utilities for your Next.js project.</Balancer> */}
             </motion.p>
-              <LicenseExplainer/>
+            <LicenseExplainer />
             <motion.div className="mx-auto mt-6 flex justify-center space-x-5 text-left" variants={FADE_DOWN_ANIMATION_VARIANTS}>
-              <CodeExample/>
+              <CodeExample />
             </motion.div>
           </motion.div>
 
-          <div className="">
+          {/* <div className="">
             <motion.div
               className="my-10 grid w-full max-w-screen-2xl grid-cols-1 gap-5 px-5 md:grid-cols-3 xl:px-0"
               initial="hidden"
@@ -113,146 +89,9 @@ export default function Home() {
                 <Card key={title} title={title} description={description} demo={demo} large={large} />
               ))}
             </motion.div>
-          </div>
+          </div> */}
         </div>
       </div>
     </>
   )
 }
-
-const features = [
-  {
-    title: 'Web3 components for the power developer',
-    description:
-      'Pre-built beautiful, a11y-first components,x powered by [Tailwind CSS](https://tailwindcss.com/), [Radix UI](https://www.radix-ui.com/), and [Framer Motion](https://framer.com/motion)',
-    large: true,
-    demo: (
-      <div className="mx-auto flex w-full max-w-[420px] justify-between gap-3 px-10">
-        <BranchIsWalletConnected>
-          <>
-            <div className="">
-              <WalletAddress truncate className="text-xl" />
-              <span className="fot-light mr-1 block text-lg">Address</span>
-            </div>
-            <div className="">
-              <WalletNonce className="text-xl" />
-              <span className="fot-light mr-1 block text-lg">Transactions</span>
-            </div>
-          </>
-          <WalletConnect className="mx-auto inline-block" />
-        </BranchIsWalletConnected>
-      </div>
-    ),
-  },
-  {
-    title: 'One-click Deploy',
-    description: 'Start your next Web3 project in ⚡ Turbo Mode with a deploy to [Vercel](https://vercel.com/) in one click.',
-    demo: (
-      <a target={'_blank'} href={DEPLOY_URL} rel="noreferrer">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="https://vercel.com/button" alt="Deploy with Vercel" width={120} />
-      </a>
-    ),
-  },
-  {
-    title: 'Rainbow Kit',
-    description: 'The best way to connect a wallet Designed for everyone. Built for developers.',
-    demo: (
-      <div className="flex items-center justify-center space-x-20">
-        <Image alt="Rainbow logo" src="/rainbow.svg" width={100} height={100} />
-      </div>
-    ),
-  },
-  {
-    title: 'Sign-In With Ethereum',
-    description: 'Authenticate users using a Web3 wallet like MetaMask or WalletConnect.',
-    demo: (
-      <div className="flex items-center justify-center space-x-20">
-        <Image alt="Prisma logo" src="/siwe.svg" width={80} height={80} />
-      </div>
-    ),
-  },
-  {
-    title: 'Etherscan',
-    description: 'Request additional information about a transaction or address from Etherscan.',
-    demo: (
-      <div className="flex items-center justify-center space-x-20">
-        <BranchColorMode>
-          <Image alt="Etherscan logo" src="/etherscan.svg" width={100} height={100} />
-          <Image alt="Etherscan logo" src="/etherscan-light.svg" width={100} height={100} />
-        </BranchColorMode>
-      </div>
-    ),
-  },
-  {
-    title: 'Authenticate with Web3',
-    description: 'Connect to the Future of Web3 with TurboETH',
-    demo: (
-      <div className="text-center text-gray-800">
-        <BranchIsWalletConnected>
-          <BranchIsAuthenticated>
-            <ButtonSIWELogout className="btn btn-blue btn-lg " />
-            <ButtonSIWELogin className="btn btn-emerald btn-lg min-h-[70px] min-w-[200px] text-xl" label="ΞID Connect" />
-          </BranchIsAuthenticated>
-          <WalletConnect />
-        </BranchIsWalletConnected>
-      </div>
-    ),
-  },
-  // {
-  //   title: '⚡Turbo actions, and hooks',
-  //   description: 'TurboETH offers a collection of actions, hooks and utilities',
-  //   demo: (
-  //     <div className="grid min-w-[220px] grid-flow-col grid-rows-3 gap-10 p-10">
-  //       <span className="font-mono font-semibold">&lt;Address/&gt;</span>
-  //       <span className="font-mono font-semibold">&lt;Balance /&gt;</span>
-  //       <span className="font-mono font-semibold">&lt;Nonce /&gt;</span>
-  //       <span className="font-mono font-semibold">&lt;ERC20Name /&gt;</span>
-  //       <span className="font-mono font-semibold">&lt;ERC20Symbol /&gt;</span>
-  //       <span className="font-mono font-semibold">&lt;ERC20Balance /&gt;</span>
-  //     </div>
-  //   ),
-  // },
-  {
-    title: 'ERC20 WAGMI',
-    description: 'Read and Write to ERC20 smart contracts using minimal UI components.',
-    demo: (
-      <div className="min-w-[220px] text-center">
-        <img
-          alt={`Token USDC icon`}
-          className="mx-auto h-12 w-12 rounded-full border-2 border-white shadow-md"
-          src={`https://raw.githubusercontent.com/Uniswap/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png`}
-        />
-        <h3 className="mt-4 text-2xl font-normal">
-          <ERC20Name chainId={1} address={'0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48'} /> (
-          <ERC20Symbol className="" chainId={1} address={'0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48'} />)
-        </h3>
-        <p className="">
-          Decimals <ERC20Decimals chainId={1} address={'0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48'} />
-        </p>
-        <Link className="btn btn-light btn-sm mt-4 font-bold" href={`/1/erc20/${erc20TokenSymbolToAddress.USDC}`}>
-          View Token Page
-        </Link>
-      </div>
-    ),
-  },
-  {
-    title: 'ERC721 WAGMI',
-    description: 'Read and Write to ERC721 smart contracts using minimal UI components.',
-    demo: (
-      <div className="text-center">
-        {/* @ts-ignore */}
-        <ERC721Name chainId={1} tokenId={1} address={'0xbcc664b1e6848caba2eb2f3de6e21f81b9276dd8'} />
-        <ERC721Image
-          // @ts-ignore
-          tokenId={1}
-          address={'0xbcc664b1e6848caba2eb2f3de6e21f81b9276dd8'}
-          className=" mx-auto my-4 w-[90px] rounded-xl border-2 border-white shadow-md"
-        />
-        <Link className="btn btn-light btn-sm mt-4 font-bold" href={`/1/erc721/0xbcc664b1e6848caba2eb2f3de6e21f81b9276dd8/42`}>
-          View Token Page
-        </Link>
-      </div>
-    ),
-  },
-]

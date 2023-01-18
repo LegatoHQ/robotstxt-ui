@@ -1,19 +1,21 @@
 import React from 'react'
 
+import { WalletAddress, WalletNonce } from '@turbo-eth/core-wagmi'
 import classNames from 'classnames'
 import Image from 'next/image'
 
 import { SITE_EMOJI, SITE_NAME } from '@/lib/constants'
 import useScroll from '@/lib/hooks/useScroll'
 
-import { LinkComponent } from '../shared/LinkComponent'
+import UserDropdown from './UserDropdown'
 import { BranchColorMode } from '../branch/BranchColorMode'
 import BranchIsAuthenticated from '../branch/BranchIsAuthenticated'
 import BranchIsWalletConnected from '../branch/BranchIsWalletConnected'
 import ResponsiveMobileAndDesktop from '../responsive/ResponsiveMobileAndDesktop'
+import { LinkComponent } from '../shared/LinkComponent'
 import { ThemeSwitcher } from '../shared/ThemeSwitcher'
 import ButtonSIWELogin from '../siwe/ButtonSIWELogin'
-import UserDropdown from './UserDropdown'
+import WalletConnect from '../WalletConnect'
 
 interface Props {
   className?: string
@@ -56,6 +58,7 @@ export function Header(props: Props) {
             <UserDropdown />
             <ButtonSIWELogin />
           </BranchIsAuthenticated>
+          <WalletConnect className="mx-auto inline-block" />
         </BranchIsWalletConnected>
         <ThemeSwitcher />
       </div>
