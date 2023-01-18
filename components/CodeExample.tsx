@@ -4,7 +4,7 @@ import Highlight from 'react-highlight'
 export default function CodeExample() {
   return (
     <>
-      <Highlight langauge="javascript"  className="javascript" >
+      <Highlight   className="javascript" >
         {` pragma solidity ^0.5.0; 
       contract SimpleStorage {
         uint storedData;
