@@ -2,7 +2,7 @@
   "extends": ["next/core-web-vitals", "prettier"],
   "plugins": ["prettier"],
   "rules": {
-    "prettier/prettier": ["warning"]
+    "prettier/prettier": ["warn"]
   },
   "overrides": [
     // Configuration for TypeScript files
