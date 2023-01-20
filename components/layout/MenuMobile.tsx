@@ -38,8 +38,11 @@ export const MenuMobile = ({ className, children }: MenuMobileProps) => {
           </div>
         </div>
         <div className="">
-          <a className=" my-2 text-xs" href="https://districtlabs.com/">
-            Built by District Labs
+          <a
+            className=" my-2 text-xs"
+            href="https://legatohq:w
+          .com/">
+            Built by Legato Labs
           </a>
           <div className="mt-2 flex items-center">
             <LinkComponent href={`https://github.com/${SOCIAL_GITHUB}`}>
