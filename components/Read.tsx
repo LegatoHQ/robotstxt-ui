@@ -17,7 +17,7 @@ function isLink(str: string) {
 }
 
 export const Read = () => {
-  const [address, setAddress] = useState<string>('0x')
+  const [address, setAddress] = useState<string>('')
 
   const contractRead = useContractRead({
     address: '0xe74168069A4fD72b5732235b0E096c7a21E89b70',
