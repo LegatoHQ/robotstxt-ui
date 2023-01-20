@@ -8,6 +8,7 @@ import localFont from '@next/font/local'
 import { QueryClient, QueryClientProvider, useQuery } from '@tanstack/react-query'
 import type { AppProps } from 'next/app'
 import { ModalProvider } from 'react-modal-hook'
+import { ToastContainer, toast } from 'react-toastify'
 import { Provider as RWBProvider } from 'react-wrap-balancer'
 import { SWRConfig } from 'swr'
 import { useAccount } from 'wagmi'
@@ -17,6 +18,7 @@ import { Layout } from '@/components/layout'
 import { useIsMounted } from '@/hooks/useIsMounted'
 import fetchJson from '@/lib/fetchJson'
 import { RainbowKit } from '@/providers/RainbowKit'
+import 'react-toastify/dist/ReactToastify.css'
 
 const sfPro = localFont({
   src: '../styles/SF-Pro-Display-Medium.otf',
@@ -70,6 +72,7 @@ export default function App({ Component, pageProps }: AppProps) {
                 <RainbowKit>
                   <HandleWalletEvents>
                     <Layout>
+                      <ToastContainer />
                       <Component {...pageProps} />
                     </Layout>
                   </HandleWalletEvents>

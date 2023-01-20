@@ -1,7 +1,6 @@
 import React from 'react'
 
-import { WalletAddress, WalletNonce } from '@turbo-eth/core-wagmi'
-import classNames from 'classnames'
+import classNames from 'clsx'
 import Image from 'next/image'
 
 import { SITE_EMOJI, SITE_NAME } from '@/lib/constants'
@@ -15,7 +14,6 @@ import ResponsiveMobileAndDesktop from '../responsive/ResponsiveMobileAndDesktop
 import { LinkComponent } from '../shared/LinkComponent'
 import { ThemeSwitcher } from '../shared/ThemeSwitcher'
 import ButtonSIWELogin from '../siwe/ButtonSIWELogin'
-import WalletConnect from '../WalletConnect'
 
 interface Props {
   className?: string
@@ -36,12 +34,12 @@ export function Header(props: Props) {
   return (
     <header className={classes}>
       <ResponsiveMobileAndDesktop>
-        <LinkComponent href="/" className="flex flex-1 items-center ">
+        {/* <LinkComponent href="/" className="flex flex-1 items-center ">
           <BranchColorMode>
             <Image alt="Logo" src="/logo-dark.png" width={32} height={32} />
             <Image alt="Logo" src="/logo-white.png" width={32} height={32} />
           </BranchColorMode>
-        </LinkComponent>
+        </LinkComponent> */}
         <LinkComponent className="flex items-center" href="/">
           <BranchColorMode>
             <Image alt="Logo" src="/logo-dark.png" width={32} height={32} />
@@ -54,11 +52,7 @@ export function Header(props: Props) {
 
       <div className="flex items-center gap-4">
         <BranchIsWalletConnected>
-          <BranchIsAuthenticated>
-            <UserDropdown />
-            <ButtonSIWELogin />
-          </BranchIsAuthenticated>
-          <WalletConnect className="mx-auto inline-block" />
+          <UserDropdown />
         </BranchIsWalletConnected>
         <ThemeSwitcher />
       </div>

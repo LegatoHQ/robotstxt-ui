@@ -15,6 +15,7 @@ interface Props {
 
 export function RainbowKit(props: Props) {
   const CHAINS = process.env.NODE_ENV === 'production' ? ETH_CHAINS_PROD : ETH_CHAINS_TEST
+  // const CHAINS = ETH_CHAINS_TEST
   const { chains, provider } = configureChains(CHAINS, [
     // alchemyProvider({
     //   apiKey: process.env.NEXT_PUBLIC_ALCHEMY_API_KEY as string,

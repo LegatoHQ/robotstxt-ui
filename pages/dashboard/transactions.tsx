@@ -1,10 +1,10 @@
 import { motion } from 'framer-motion'
 import { useNetwork } from 'wagmi'
 
+import TransactionsTable from '@/components/blockchain/TransactionsTable'
 import DashboardSidebar from '@/components/layout/DashboardSidebar'
 import { Head } from '@/components/layout/Head'
 import ButtonSIWELogout from '@/components/siwe/ButtonSIWELogout'
-import TransactionsTable from '@/components/TransactionsTable'
 import { FADE_DOWN_ANIMATION_VARIANTS } from '@/lib/design'
 import { useAccountTransactions } from '@/lib/hooks/useAccountTransactions'
 

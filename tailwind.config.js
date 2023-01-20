@@ -1,5 +1,5 @@
 /** @type {import('tailwindcss').Config} */
-const plugin = require("tailwindcss/plugin");
+const plugin = require('tailwindcss/plugin')
 module.exports = {
   darkMode: 'class',
   content: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
@@ -16,10 +16,10 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        default: ['var(--inter-font)', "system-ui", "sans-serif"],
-        primary: ['var(--raleway-font)', "system-ui", "sans-serif"],
-        raleway: ['var(--raleway-font)', "system-ui", "sans-serif"],
-        sfPro: ['var(--sfPro-font)', "system-ui", "sans-serif"],
+        default: ['Roboto', 'var(--inter-font)', 'system-ui', 'sans-serif'],
+        primary: ['var(--raleway-font)', 'system-ui', 'sans-serif'],
+        raleway: ['var(--raleway-font)', 'system-ui', 'sans-serif'],
+        sfPro: ['var(--sfPro-font)', 'system-ui', 'sans-serif'],
       },
       fontSize: {
         '2xs': '0.65rem',
@@ -39,21 +39,22 @@ module.exports = {
       },
       animation: {
         // Tooltip
-        "slide-up-fade": "slide-up-fade 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
-        "slide-down-fade": "slide-down-fade 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
+        'slide-up-fade': 'slide-up-fade 0.3s cubic-bezier(0.16, 1, 0.3, 1)',
+        'slide-down-fade': 'slide-down-fade 0.3s cubic-bezier(0.16, 1, 0.3, 1)',
       },
       keyframes: {
         // Tooltip
-        "slide-up-fade": {
-          "0%": { opacity: 0, transform: "translateY(6px)" },
-          "100%": { opacity: 1, transform: "translateY(0)" },
+        'slide-up-fade': {
+          '0%': { opacity: 0, transform: 'translateY(6px)' },
+          '100%': { opacity: 1, transform: 'translateY(0)' },
         },
-        "slide-down-fade": {
-          "0%": { opacity: 0, transform: "translateY(-6px)" },
-          "100%": { opacity: 1, transform: "translateY(0)" },
+        'slide-down-fade': {
+          '0%': { opacity: 0, transform: 'translateY(-6px)' },
+          '100%': { opacity: 1, transform: 'translateY(0)' },
         },
       },
       colors: {
+        black: '#23282C',
         gray: {
           100: '#f7fafc',
           200: '#edf2f7',
@@ -80,12 +81,12 @@ module.exports = {
     },
   },
   plugins: [
-    require("@tailwindcss/forms"),
-    require("@tailwindcss/typography"),
-    require("@tailwindcss/line-clamp"),
+    require('@tailwindcss/forms'),
+    require('@tailwindcss/typography'),
+    require('@tailwindcss/line-clamp'),
     plugin(({ addVariant }) => {
-      addVariant("radix-side-top", '&[data-side="top"]');
-      addVariant("radix-side-bottom", '&[data-side="bottom"]');
+      addVariant('radix-side-top', '&[data-side="top"]')
+      addVariant('radix-side-bottom', '&[data-side="bottom"]')
     }),
   ],
 }

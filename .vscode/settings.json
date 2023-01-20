@@ -6,7 +6,10 @@
   },
   "editor.defaultFormatter": "dbaeumer.vscode-eslint",
   "editor.formatOnSave": true,
-  "editor.codeActionsOnSave": ["source.addMissingImports", "source.fixAll.eslint"],
+  "editor.codeActionsOnSave": [
+    "source.addMissingImports",
+    "source.fixAll.eslint"
+  ],
   "eslint.validate": ["typescript", "javascript", "javascriptreact"],
   "jest.autoRun": {
     "watch": true, // Start the jest with the watch flag

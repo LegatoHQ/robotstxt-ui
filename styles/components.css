@@ -1,155 +1,25 @@
-
-.card {
-  @apply bg-white dark:bg-neutral-700 dark:text-white border-2 dark:border-neutral-700 rounded-lg p-6 shadow-sm hover:shadow-md hover:bg-white transition-all duration-300 ease-in-out;
+.WalletAddress {
+  @apply font-medium;
 }
 
-.card-min {
-  @apply bg-neutral-50 dark:bg-neutral-600 dark:text-white bg-opacity-50 rounded-lg shadow-sm;
+.WalletAddress.styled {
+  @apply bg-gray-100 text-gray-800 font-bold text-sm px-4 py-2 rounded-md shadow-md hover:shadow-lg;
 }
 
-.input {
-  @apply border-0 px-3 py-3 placeholder-neutral-400 text-gray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150;
+.WalletBalance.styled {
+  @apply bg-gray-100 text-gray-800 font-bold text-sm px-4 py-2 rounded-md shadow-md hover:shadow-lg;
 }
 
-.btn-w-label {
-  @apply cursor-pointer font-semibold rounded-md shadow-md text-center focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:ring-opacity-75 duration-200;
+.ButtonSIWELogin.styled {
+  @apply bg-gradient-to-br from-emerald-500 to-emerald-700 text-white font-bold text-sm px-4 py-2 rounded-md shadow-md hover:shadow-lg hover:from-emerald-600 hover:to-emerald-800;
 }
 
-.btn {
-  @apply cursor-pointer font-semibold rounded-md shadow-md py-3 inline-block px-4 text-center focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:ring-opacity-75 duration-200;
+.ButtonSIWELogin.styled:disabled {
+  @apply bg-gray-400 cursor-not-allowed !important;
 }
 
-.btn-small {
-  @apply text-sm py-1 px-3;
-}
-.btn-sm {
-  @apply text-sm;
-}
-.btn-lg {
-  @apply text-lg px-5 py-4;
-}
-
-.btn-pill {
-  @apply rounded-full;
-}
-
-.btn-curve {
-  @apply rounded-lg;
-}
-
-.btn-xl {
-  @apply text-xl px-5 py-4;
-}
-
-.btn-2xl {
-  @apply text-2xl px-6 py-4;
-}
-
-.btn-primary {
-  @apply bg-white text-gray-600 hover:bg-gray-50 focus:ring-gray-400;
-}
-
-.btn-secondary {
-  @apply bg-white text-gray-600 hover:bg-gray-50 focus:ring-gray-400;
-}
-
-.btn-tertiary {
-  @apply bg-white text-gray-600 hover:bg-gray-50 focus:ring-gray-400;
-}
-
-.btn-white {
-  @apply bg-white text-gray-600 hover:bg-gray-50 focus:ring-gray-400;
-}
-
-.btn-light {
-  @apply bg-neutral-50 hover:bg-neutral-100 focus:ring-neutral-300 text-neutral-700;
-}
-
-.btn-dark {
-  @apply bg-neutral-600 hover:bg-neutral-700 focus:ring-neutral-400 text-white;
-}
-
-.btn-green {
-  @apply bg-green-600 hover:bg-green-700 focus:ring-green-400 text-white;
-}
-
-.btn-purple {
-  @apply bg-purple-600 hover:bg-purple-700 focus:ring-purple-400 text-white;
-}
-
-.btn-indigo {
-  @apply bg-indigo-600 hover:bg-indigo-700 focus:ring-indigo-400 text-white;
-}
-
-.btn-emerald {
-  @apply bg-emerald-600 hover:bg-emerald-700 focus:ring-emerald-400 text-white;
-}
-
-.btn-blue {
-  @apply bg-blue-600 hover:bg-blue-700 focus:ring-blue-400 text-white;
-}
-
-.btn-red {
-  @apply bg-red-600 hover:bg-red-700 focus:ring-red-400 text-white;
-}
-
-.tag {
-  @apply inline-flex text-xs leading-5 font-semibold rounded-lg;
-  padding-left: 0.65rem;
-  padding-right: 0.65rem;
-  padding-bottom: 0.125rem;
-  padding-top: 0.125rem;
-}
-
-.tag-base {
-  @apply text-base;
-}
-
-.tag-white {
-  @apply text-gray-700 bg-white;
-}
-.tag-cloud, .tag-light {
-  @apply text-gray-600 bg-gray-100;
-}
-.tag-smoke {
-  @apply text-gray-700 bg-gray-200;
-}
-.tag-charcoal {
-  @apply text-gray-100 bg-gray-700;
-}
-.tag-dark {
-  @apply text-gray-100 bg-gray-800;
-}
-
-.tag-gray {
-  @apply text-gray-100 bg-gray-700;
-}
-.tag-green {
-  @apply text-green-100 bg-green-800;
-}
-.tag-emerald {
-  @apply text-emerald-100 bg-emerald-800;
-}
-.tag-green-light {
-  @apply text-green-800 bg-green-200 hover:bg-green-300;
-}
-.tag-red {
-  @apply text-red-100 bg-red-800;
-}
-.tag-blue {
-  @apply text-blue-100 bg-blue-800;
-}
-.tag-indigo {
-  @apply text-indigo-100 bg-indigo-800;
-}
-.tag-indigo {
-  @apply text-purple-100 bg-purple-800;
-}
-.tag-ens-1 {
-  @apply text-purple-100 bg-blue-600;
-}
-.tag-orange {
-  @apply text-yellow-100 bg-yellow-800;
+.ButtonSIWELogin.styled:disabled:hover {
+  @apply bg-gray-400 !important;
 }
 
 .lds-dual-ring {
@@ -158,7 +28,7 @@
   height: 22px;
 }
 .lds-dual-ring:after {
-  content: " ";
+  content: ' ';
   display: block;
   width: 18px;
   height: 18px;
@@ -168,8 +38,8 @@
 }
 
 .lds-dual-ring.light:after {
-  border: 6px solid #FFF;
-  border-color: #FFF transparent #FFF transparent;
+  border: 6px solid #fff;
+  border-color: #fff transparent #fff transparent;
   @apply shadow-lg;
 }
 
@@ -185,4 +55,208 @@
   100% {
     transform: rotate(360deg);
   }
+}
+
+@import '@radix-ui/colors/blackA.css';
+@import '@radix-ui/colors/green.css';
+@import '@radix-ui/colors/mauve.css';
+@import '@radix-ui/colors/violet.css';
+
+/* reset */
+button,
+fieldset,
+input {
+  all: unset;
+}
+
+.DialogOverlay {
+  background-color: var(--blackA9);
+  position: fixed;
+  inset: 0;
+  animation: overlayShow 150ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.DialogContent {
+  background-color: white;
+  border-radius: 6px;
+  box-shadow: hsl(206 22% 7% / 35%) 0px 10px 38px -10px, hsl(206 22% 7% / 20%) 0px 10px 20px -15px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90vw;
+  max-width: 763px;
+  max-height: 85vh;
+  padding: 25px;
+  animation: contentShow 150ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.DialogContent:focus {
+  outline: none;
+}
+
+.DialogTitle {
+  margin: 0;
+  font-weight: 500;
+  color: var(--mauve12);
+  font-size: 17px;
+}
+
+.DialogDescription {
+  margin: 10px 0 20px;
+  color: var(--mauve11);
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.Button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  padding: 0 15px;
+  font-size: 15px;
+  line-height: 1;
+  font-weight: 500;
+  height: 35px;
+}
+.Button.violet {
+  background-color: white;
+  color: var(--violet11);
+  box-shadow: 0 2px 10px var(--blackA7);
+}
+.Button.violet:hover {
+  background-color: var(--mauve3);
+}
+.Button.violet:focus {
+  box-shadow: 0 0 0 2px black;
+}
+.Button.green {
+  background-color: var(--green4);
+  color: var(--green11);
+}
+.Button.green:hover {
+  background-color: var(--green5);
+}
+.Button.green:focus {
+  box-shadow: 0 0 0 2px var(--green7);
+}
+
+.IconButton {
+  font-family: inherit;
+  border-radius: 100%;
+  height: 25px;
+  width: 25px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--violet11);
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+.IconButton:hover {
+  background-color: var(--violet4);
+}
+.IconButton:focus {
+  box-shadow: 0 0 0 2px var(--violet7);
+}
+
+.Fieldset {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.Label {
+  font-size: 15px;
+  color: var(--violet11);
+  width: 90px;
+  text-align: right;
+}
+
+.Input {
+  width: 100%;
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  padding: 0 10px;
+  font-size: 15px;
+  line-height: 1;
+  color: var(--violet11);
+  box-shadow: 0 0 0 1px var(--violet7);
+  height: 35px;
+}
+.Input:focus {
+  box-shadow: 0 0 0 2px var(--violet8);
+}
+
+@keyframes overlayShow {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes contentShow {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -48%) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+.react-datalist-input__container > * {
+  box-sizing: border-box;
+}
+
+.react-datalist-input__container {
+  width: 100%;
+  position: relative;
+  --shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --gray: rgb(200, 200, 200);
+  --padding: 5px;
+  --border-radius: 5px;
+  --border: 1px solid var(--gray);
+}
+
+.react-datalist-input__textbox {
+  @apply box-border w-full rounded-full border-2 border-solid border-[#9146FF] px-6 py-4 shadow-xl  dark:bg-white/10 dark:text-white dark:placeholder:text-gray-600;
+}
+
+.react-datalist-input__listbox {
+  width: 100%;
+  position: absolute;
+  margin: 2px 0 0 0;
+  padding: 0;
+  border: var(--border);
+  border-radius: var(--border-radius);
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  list-style-type: none;
+  box-shadow: var(--shadow);
+  z-index: 10;
+}
+
+.react-datalist-input__listbox-option {
+  width: 100%;
+  cursor: pointer;
+  margin: 0;
+  padding: var(--padding);
+}
+
+.react-datalist-input__listbox-option:focus {
+  background-color: var(--gray);
+}
+
+.react-datalist-input__listbox-option:hover {
+  background-color: var(--gray);
 }

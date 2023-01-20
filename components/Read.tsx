@@ -7,6 +7,15 @@ import { Collapse } from 'react-collapse'
 import { ColorRing } from 'react-loader-spinner'
 import { useContractRead } from 'wagmi'
 
+function isLink(str: string) {
+  try {
+    new URL(str)
+    return true
+  } catch (e) {
+    return false
+  }
+}
+
 export const Read = () => {
   const [address, setAddress] = useState<string>('0x')
 
@@ -30,39 +39,44 @@ export const Read = () => {
   const isFetchedAndEmpty = !contractRead.data && contractRead.isFetched
 
   return (
-    <div className="text-black dark:text-white">
-      <div className="flex flex-col gap-2">
-        <div className="relative">
-          <input
-            placeholder="Enter a blockchain address to query"
-            className="w-full rounded-full border-2 border-[#9146FF] px-6 py-4 shadow-xl  dark:bg-white/10 dark:text-white dark:placeholder:text-gray-100"
-            onInput={(e) => setAddress(e.currentTarget.value)}
-          />
-          {contractRead.isLoading && (
-            <div className="pointer-events-none absolute right-0 top-1/2 mr-2 -translate-y-1/2">
-              <ColorRing
-                visible={true}
-                height="45"
-                width="45"
-                ariaLabel="blocks-loading"
-                wrapperStyle={{}}
-                wrapperClass="blocks-wrapper"
-                colors={['#e15b64', '#f47e60', '#f8b26a', '#abbd81', '#849b87']}
-              />
-            </div>
-          )}
-        </div>
-        {isFetchedAndEmpty && <div className="text-orange-500">No license found for this address</div>}
-        <Collapse isOpened={Boolean(contractRead.isSuccess && contractRead.data)}>
-          <div className="mt-4 flex w-full items-center gap-2 p-4 text-left dark:bg-white/10">
-            <Verified className={cn('inline-block text-green-500')} />
-            <div>
-              <div className="text-gray-500">License URI:</div>
-              <div className="text-gray-900 dark:text-white">{contractRead.data}</div>
-            </div>
+    <div className="flex w-full max-w-full flex-col gap-2 text-black dark:text-white">
+      <div className="relative">
+        <input
+          placeholder="Enter a blockchain address to query"
+          className="box-border w-full rounded-full border-2 border-solid border-[#9146FF] px-6 py-4 pr-12 shadow-xl  dark:bg-white/10 dark:text-white dark:placeholder:text-gray-600"
+          onInput={(e) => setAddress(e.currentTarget.value)}
+        />
+        {contractRead.isLoading && (
+          <div className="pointer-events-none absolute right-0 top-1/2 mr-2 -translate-y-1/2">
+            <ColorRing
+              visible={true}
+              height="45"
+              width="45"
+              ariaLabel="blocks-loading"
+              wrapperStyle={{}}
+              wrapperClass="blocks-wrapper"
+              colors={['#e15b64', '#f47e60', '#f8b26a', '#abbd81', '#849b87']}
+            />
           </div>
-        </Collapse>
+        )}
       </div>
+      {isFetchedAndEmpty && <div className="text-center text-orange-500">No license found for this address</div>}
+      {address && !isAddress(address) && <div className="text-center text-purple-600">Does not look like a valid address</div>}
+      <Collapse isOpened={Boolean(contractRead.isSuccess && contractRead.data)}>
+        <div className="mt-4 flex w-full items-center gap-2 bg-black/10 p-4 text-left dark:bg-white/10">
+          <Verified className={cn('inline-block text-green-500')} />
+          <div>
+            <div className="text-gray-600">License URI:</div>
+            {isLink(contractRead.data || '') ? (
+              <a href={contractRead.data} className="underline" target="_blank" rel="noreferrer">
+                {contractRead.data}
+              </a>
+            ) : (
+              <div className="text-gray-900 dark:text-white">{contractRead.data}</div>
+            )}
+          </div>
+        </div>
+      </Collapse>
     </div>
   )
 }
