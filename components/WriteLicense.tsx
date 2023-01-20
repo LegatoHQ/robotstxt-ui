@@ -42,7 +42,7 @@ function getSuggestions(value: string) {
 }
 
 export const WriteLicense: FC<{ onSuccess?: () => {} }> = ({ onSuccess }) => {
-  const [address, setAddress] = useState<string>('0x')
+  const [address, setAddress] = useState<string>('')
   const [uri, setUri] = useState<string>('')
   const [suggestions, setSuggestions] = useState<
     {
@@ -71,7 +71,7 @@ export const WriteLicense: FC<{ onSuccess?: () => {} }> = ({ onSuccess }) => {
     onSuccess: () => {
       toast.success('License set successfully')
       setUri('')
-      setAddress('0x')
+      setAddress('')
       onSuccess && onSuccess()
     },
   })
