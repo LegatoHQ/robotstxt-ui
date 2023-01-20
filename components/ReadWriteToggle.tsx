@@ -10,14 +10,14 @@ interface Props {
 }
 export const ReadWriteToggle: FC<Props> = ({ active, onChange, className }) => {
   return (
-    <div className={cn('flex font-semibold dark:bg-white/10 w-min rounded-full p-[6px] shadow-xl', className)}>
+    <div className={cn('w-min rounded-full p-[6px] font-semibold shadow-xl dark:bg-white/10', className)}>
       <button
-        className={cn({ 'bg-[#9146FF]': active === 'read', 'text-white': active === 'read' }, 'py-[10px] px-[36px] rounded-full')}
+        className={cn({ 'bg-[#9146FF]': active === 'read', 'text-white': active === 'read' }, 'rounded-full py-[10px] px-[36px]')}
         onClick={() => onChange('read')}>
         Read
       </button>
       <button
-        className={cn({ 'bg-[#9146FF]': active === 'write', 'text-white': active === 'write' }, 'py-[10px] px-[36px] rounded-full')}
+        className={cn({ 'bg-[#9146FF]': active === 'write', 'text-white': active === 'write' }, 'rounded-full py-[10px] px-[36px]')}
         onClick={() => onChange('write')}>
         Write
       </button>

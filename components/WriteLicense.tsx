@@ -101,7 +101,7 @@ export const WriteLicense: FC<{ onSuccess?: () => {} }> = ({ onSuccess }) => {
             'box-border w-full rounded-full border-2 border-solid border-[#9146FF] px-6 py-4 shadow-xl  dark:bg-white/10 dark:text-white dark:placeholder:text-gray-600',
         }}
         renderSuggestion={(suggestion, { isHighlighted }) => (
-          <div className={cn('flex flex-col gap-1 px-4 py-2', { 'dark:bg-white/20 bg-black/10': isHighlighted })}>
+          <div className={cn('flex flex-col gap-1 px-4 py-2', { 'bg-black/10 dark:bg-white/20': isHighlighted })}>
             <div className="text-sm font-semibold dark:text-white">{suggestion.id}</div>
             <div className="text-xs text-gray-500 dark:text-gray-600">{suggestion.value}</div>
           </div>
