@@ -117,7 +117,7 @@ export const WriteLicense: FC<{ onSuccess?: () => {} }> = ({ onSuccess }) => {
       <div className="flex items-center gap-3">
         <div className="flex flex-col">
           <span className="text-xs text-gray-500">My balance</span>
-          <div className={cn('text-sm font-semibold', { 'text-red-500': !hasEnoughBalanceToWrite })}>
+          <div className={cn('text-sm font-semibold dark:text-white', { 'text-red-500 ': !hasEnoughBalanceToWrite })}>
             {balanceDisplay} {balance.data?.symbol}
           </div>
         </div>
