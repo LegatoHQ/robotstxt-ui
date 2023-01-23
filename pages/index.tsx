@@ -37,7 +37,8 @@ export default function Home() {
           <a
             href="https://legatohq.com"
             target="_blank"
-            className="mb-10 mt-0.5 w-full text-right text-base font-thin  tracking-[-0.02em] text-black drop-shadow-sm dark:text-white" rel="noreferrer">
+            className="mb-10 mt-0.5 w-full text-right text-base font-thin  tracking-[-0.02em] text-black drop-shadow-sm dark:text-white"
+            rel="noreferrer">
             by Legato Labs
           </a>
         </h1>
