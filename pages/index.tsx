@@ -31,9 +31,15 @@ export default function Home() {
             },
           },
         }}>
-        <img src="/logo.svg" alt="Turbo ETH" className="mx-auto h-20 w-20" />
-        <h1 className="mb-10 pb-2 text-center text-5xl font-bold tracking-[-0.02em] text-black drop-shadow-sm dark:text-white md:text-6xl">
-          Robots.xyz
+        <img src="/logo.svg" alt="Robots!" className="mx-auto h-20 w-20" />
+        <h1 className="grid text-center font-mono text-5xl font-bold tracking-[-0.02em] text-black drop-shadow-sm dark:text-white md:text-6xl">
+          robots-txt.xyz
+          <a
+            href="https://legatohq.com"
+            target="_blank"
+            className="mb-10 mt-0.5 w-full text-right text-base font-thin  tracking-[-0.02em] text-black drop-shadow-sm dark:text-white" rel="noreferrer">
+            by Legato Labs
+          </a>
         </h1>
         <ReadWriteToggle className="mx-auto" onChange={setActive} active={active} />
         <div className={cn({ hidden: active !== 'write' }, 'w-full')}>

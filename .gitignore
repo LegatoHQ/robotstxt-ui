@@ -5,6 +5,7 @@
 /.pnp
 .pnp.js
 yarn.lock
+!.husky/_/husky.sh
 
 # testing
 /coverage
