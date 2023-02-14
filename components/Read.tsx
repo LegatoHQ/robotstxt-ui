@@ -5,7 +5,9 @@ import { isAddress } from 'ethers/lib/utils.js'
 import { Verified } from 'lucide-react'
 import { Collapse } from 'react-collapse'
 import { ColorRing } from 'react-loader-spinner'
-import { useContractRead } from 'wagmi'
+import { useContractRead, useNetwork } from 'wagmi'
+import { getContractsFor } from '@/lib/actions/contractOptions'
+import { RobotTxt__factory } from '@/lib/typechain-types'
 
 function isLink(str: string) {
   try {
@@ -17,26 +19,21 @@ function isLink(str: string) {
 }
 
 export const Read = () => {
+  const { chain } = useNetwork()
+  const contracts = getContractsFor(chain?.id)
   const [address, setAddress] = useState<string>('')
 
   const contractRead = useContractRead({
-    address: '0xe74168069A4fD72b5732235b0E096c7a21E89b70',
-    functionName: 'getDefaultLicense',
-    chainId: 80001,
-    abi: [
-      {
-        inputs: [{ internalType: 'address', name: 'address', type: 'address' }],
-        name: 'getDefaultLicense',
-        outputs: [{ internalType: 'string', name: '', type: 'string' }],
-        type: 'function',
-        stateMutability: 'view',
-      },
-    ],
+    address: contracts.ROBOTS_TXT,
+    functionName: 'licenseOf',
+    chainId: chain?.id,
+    abi: RobotTxt__factory.abi,
     args: [address as `0x${string}`],
     enabled: isAddress(address),
   })
 
   const isFetchedAndEmpty = !contractRead.data && contractRead.isFetched
+  const [licenseURI, licenseInfo] = contractRead.data || []
 
   return (
     <div className="flex w-full max-w-full flex-col gap-2 text-black dark:text-white">
@@ -67,12 +64,18 @@ export const Read = () => {
           <Verified className={cn('inline-block text-green-500')} />
           <div>
             <div className="text-gray-600">License URI:</div>
-            {isLink(contractRead.data || '') ? (
-              <a href={contractRead.data} className="underline" target="_blank" rel="noreferrer">
-                {contractRead.data}
-              </a>
+            {isLink(licenseURI || '') ? (
+              <>
+                <a href={licenseURI} className="underline" target="_blank" rel="noreferrer">
+                  {licenseURI}
+                </a>
+                <div className="text-gray-900 dark:text-white">{licenseInfo}</div>
+              </>
             ) : (
-              <div className="text-gray-900 dark:text-white">{contractRead.data}</div>
+              <>
+                <div className="text-gray-900 dark:text-white">{licenseURI}</div>
+                <div className="text-gray-900 dark:text-white">{licenseInfo}</div>
+              </>
             )}
           </div>
         </div>

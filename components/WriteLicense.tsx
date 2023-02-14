@@ -40,7 +40,7 @@ function getSuggestions(value: string) {
 }
 
 export const WriteLicense: FC<{ onSuccess?: () => {} }> = ({ onSuccess }) => {
-  const { address, setAddress, uri, setUri, contractWrite, gasFeeDisplay, balance, balanceDisplay, hasEnoughBalanceToWrite } =
+  const { address, setAddress, uri, setUri,info,setInfo, contractWrite, gasFeeDisplay, balance, balanceDisplay, hasEnoughBalanceToWrite } =
     useWriteLicense(onSuccess)
 
   const [suggestions, setSuggestions] = useState<
@@ -55,7 +55,10 @@ export const WriteLicense: FC<{ onSuccess?: () => {} }> = ({ onSuccess }) => {
       <input
         placeholder="Enter a blockchain address that you control as an owner."
         className="box-border w-full rounded-full  border-2 border-solid border-[#9146FF] px-6 py-4 shadow-xl  dark:bg-white/10 dark:text-white dark:placeholder:text-gray-600"
-        onInput={(e) => setAddress(e.currentTarget.value)}
+        onInput={(e) => {
+          setAddress(e.currentTarget.value);
+          setInfo(e.currentTarget.value)
+        }}
       />
       <Autosuggest
         containerProps={{
@@ -94,10 +97,13 @@ export const WriteLicense: FC<{ onSuccess?: () => {} }> = ({ onSuccess }) => {
           { 'opacity-50': contractWrite.isLoading || !uri || !address }
         )}
         disabled={contractWrite.isLoading || !uri || !address}
-        onClick={() =>
+        onClick={() =>{
+
+          // alert('write')
           contractWrite.write?.({
-            recklesslySetUnpreparedArgs: [address as `0x${string}`, uri],
+            recklesslySetUnpreparedArgs: [address as `0x${string}`, uri, uri],
           })
+        }
         }>
         <div className={cn({ 'opacity-0': contractWrite.isLoading })}>Write</div>
         {contractWrite.isLoading && (
