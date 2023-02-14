@@ -3,8 +3,10 @@ import { useState } from 'react'
 
 import cn from 'classnames'
 import { motion } from 'framer-motion'
+import { useDebounce } from 'react-use'
 import Balancer from 'react-wrap-balancer'
 
+import { Confetti } from '@/components/Confetti'
 import { Head } from '@/components/layout/Head'
 import { CantBeEvilLicenseDialog } from '@/components/LicensesDialog'
 import { Read } from '@/components/Read'
@@ -14,9 +16,21 @@ import { FADE_DOWN_ANIMATION_VARIANTS } from '@/lib/design'
 
 export default function Home() {
   const [active, setActive] = useState<'read' | 'write'>('read')
+  const [showConfetti, setShowConfetti] = useState(false)
+
+  useDebounce(
+    () => {
+      if (!showConfetti) return
+      setShowConfetti(false)
+    },
+    10000,
+    [showConfetti]
+  )
+
   return (
     <>
       <Head />
+      {showConfetti && <Confetti />}
       <motion.div
         className="flex-center mx-auto flex w-full max-w-2xl flex-col gap-4 px-5"
         initial="hidden"
@@ -44,7 +58,12 @@ export default function Home() {
         </h1>
         <ReadWriteToggle className="mx-auto" onChange={setActive} active={active} />
         <div className={cn({ hidden: active !== 'write' }, 'w-full')}>
-          <WriteLicense onSuccess={() => setActive('read')} />
+          <WriteLicense
+            onSuccess={() => {
+              setShowConfetti(true)
+              return setActive('read')
+            }}
+          />
         </div>
         <div className={cn({ hidden: active !== 'read' }, 'w-full')}>
           <Read />

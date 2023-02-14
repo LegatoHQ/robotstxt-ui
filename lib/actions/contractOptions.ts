@@ -1,4 +1,4 @@
-import { ethers } from "ethers"
+import { ethers } from 'ethers'
 
 export interface IContractOptions {
   CHAIN_ID: number
@@ -15,7 +15,5 @@ export const mumbaiContractOptions: IContractOptions = {
 }
 export const allContractOptions: IContractOptions[] = [mumbaiContractOptions]
 
-export  const getContractsFor = (chainId: number): IContractOptions => 
-        allContractOptions.find((opt: IContractOptions) => 
-                            opt.CHAIN_ID === chainId) 
-        || mumbaiContractOptions
+export const getContractsFor = (chainId?: number): IContractOptions =>
+  allContractOptions.find((opt: IContractOptions) => opt.CHAIN_ID === chainId) || mumbaiContractOptions

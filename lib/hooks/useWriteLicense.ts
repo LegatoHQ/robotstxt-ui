@@ -1,13 +1,24 @@
 import { useState } from 'react'
 
+import { ToastDescription } from '@radix-ui/react-toast'
 import { BigNumber, BigNumberish } from 'ethers'
 import { formatUnits, isAddress } from 'ethers/lib/utils.js'
 import { config } from 'react-spring'
 import { toast } from 'react-toastify'
-import { useAccount, useBalance, useContractWrite, useFeeData, useNetwork, usePrepareContractWrite, useWaitForTransaction } from 'wagmi'
-import { RobotTxt, RobotTxt__factory } from '../typechain-types'
+import {
+  useAccount,
+  useBalance,
+  useContractRead,
+  useContractWrite,
+  useFeeData,
+  useNetwork,
+  usePrepareContractWrite,
+  useQueryClient,
+  useWaitForTransaction,
+} from 'wagmi'
+
 import { getContractsFor } from '../actions/contractOptions'
-import { ToastDescription } from '@radix-ui/react-toast'
+import { RobotTxt, RobotTxt__factory } from '../typechain-types'
 
 const formatter = new Intl.NumberFormat('en-US', {
   maximumFractionDigits: 6,
@@ -29,14 +40,24 @@ export const useWriteLicense = (onSuccess?: () => void) => {
 
   const feeData = useFeeData()
 
-  const {chain } =useNetwork()
-  const contracts = getContractsFor(chain?.id);
+  const { chain } = useNetwork()
+  const contracts = getContractsFor(chain?.id)
   // const robotContract = RobotTxt__factory.connect(contracts.ROBOTS_TXT, window.ethereum as any);
+  const ownerAddressRead = useContractRead({
+    address: address,
+    functionName: 'owner',
+    chainId: chain?.id,
+    abi: RobotTxt__factory.abi,
+    enabled: isAddress(address),
+  })
+
+  const isOwner = ownerAddressRead.data?.toLowerCase() === account.address?.toLowerCase()
+
   const prepareContract = usePrepareContractWrite({
     address: contracts.ROBOTS_TXT,
     functionName: 'setDefaultLicense',
     chainId: chain?.id,
-    // abi:RobotTxt__factory.abi, 
+    // abi:RobotTxt__factory.abi,
     abi: [
       {
         inputs: [
@@ -48,11 +69,10 @@ export const useWriteLicense = (onSuccess?: () => void) => {
         outputs: [],
         type: 'function',
         stateMutability: 'nonpayable',
-        gas: 100000,
       },
     ],
-    args: [ address as `0x${string}`, uri, uri ],
-    enabled: Boolean(isAddress(address) && uri && feeData.isSuccess),
+    args: [address as `0x${string}`, uri, info],
+    enabled: Boolean(isAddress(address) && uri && info && feeData.isSuccess),
   })
 
   const contractWrite = useContractWrite({
@@ -60,30 +80,29 @@ export const useWriteLicense = (onSuccess?: () => void) => {
     onError: (error: Error) => {
       toast.error(error.message)
     },
-    onSettled: () => {
-     
-    },
+    onSettled: () => {},
     onSuccess: () => {
-      toast.info('Setting License...');
+      toast.info('Setting License...')
     },
   })
 
   const waitForTransaction = useWaitForTransaction({
     hash: contractWrite.data?.hash,
-    onSettled: () => {
-      toast.success('License set'); // setUri('');
-      setAddress('');
-      setUri('');
-      setInfo('');
+    onSuccess: () => {
+      toast.success('License set') // setUri('');
+      setAddress('')
+      setUri('')
+      setInfo('')
+      onSuccess && onSuccess()
     },
     onError: (error: Error) => {
-      console.error(error);
+      console.error(error)
       toast.error(error.message)
     },
     confirmations: 1,
     chainId: chain?.id,
-    enabled: Boolean(contractWrite.isSuccess && isAddress(address) && uri && feeData.isSuccess),
-  }) 
+    enabled: Boolean(contractWrite.data?.hash),
+  })
 
   const gasFee = calcGasFee(feeData.data?.gasPrice || BigNumber.from(0), prepareContract.data?.request.gasLimit || BigNumber.from(0))
   const gasFeeDisplay = formatter.format(+formatUnits(gasFee, balance.data?.decimals || 18))
@@ -104,5 +123,8 @@ export const useWriteLicense = (onSuccess?: () => void) => {
     gasFeeDisplay,
     balanceDisplay,
     hasEnoughBalanceToWrite,
+    ownerAddressRead,
+    isOwner,
+    waitForTransaction,
   }
 }
