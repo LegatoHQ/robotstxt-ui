@@ -59,7 +59,9 @@ export const Read = () => {
         )}
       </div>
       {isFetchedAndEmpty && <div className="text-center text-orange-500">No license found for this address</div>}
-      {address && !isAddress(address) && <div className="text-center text-purple-600">Does not look like a valid address</div>}
+      {address && !isAddress(address) && (
+        <div className="text-center text-purple-600">Does not look like a valid address</div>
+      )}
       <Collapse isOpened={Boolean(contractRead.isSuccess && contractRead.data)}>
         <div className="mt-4 flex w-full items-center gap-2 bg-black/10 p-4 text-left dark:bg-white/10">
           <Verified className={cn('inline-block text-green-500')} />

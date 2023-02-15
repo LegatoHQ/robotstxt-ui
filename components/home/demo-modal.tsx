@@ -4,7 +4,13 @@ import Image from 'next/image'
 
 import Modal from '@/components/shared/modal'
 
-const DemoModal = ({ showDemoModal, setShowDemoModal }: { showDemoModal: boolean; setShowDemoModal: Dispatch<SetStateAction<boolean>> }) => {
+const DemoModal = ({
+  showDemoModal,
+  setShowDemoModal,
+}: {
+  showDemoModal: boolean
+  setShowDemoModal: Dispatch<SetStateAction<boolean>>
+}) => {
   return (
     <Modal showModal={showDemoModal} setShowModal={setShowDemoModal}>
       <div className="w-full overflow-hidden shadow-xl sm:max-w-md sm:rounded-2xl sm:border sm:border-gray-100">

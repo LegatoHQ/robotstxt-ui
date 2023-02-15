@@ -30,7 +30,13 @@ export function isCompositeTypeElement(element) {
 }
 
 export const Component = (component: ReactElement | ReactNode, props: any): React.ReactNode => {
-  return isReactComponent(component) ? React.createElement(component, props) : isElement(component) ? React.cloneElement(component, props) : <></>
+  return isReactComponent(component) ? (
+    React.createElement(component, props)
+  ) : isElement(component) ? (
+    React.cloneElement(component, props)
+  ) : (
+    <></>
+  )
 }
 
 export default Component

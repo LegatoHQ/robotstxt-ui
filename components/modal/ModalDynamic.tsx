@@ -59,7 +59,11 @@ export const ModalDynamic = ({ children, className, hideModal }: IModalDynamic) 
   return (
     <>
       <RainbowKit>
-        <animated.div onClick={handleCloseModal} className={'fixed inset-0 z-10'} style={{ ...animateBackground, zIndex: 999 }} />
+        <animated.div
+          onClick={handleCloseModal}
+          className={'fixed inset-0 z-10'}
+          style={{ ...animateBackground, zIndex: 999 }}
+        />
         <div className={classesPanel} style={{ zIndex: 1000 }}>
           <animated.div className={''} style={{ ...animatePanel, zIndex: 1000 }}>
             <div className="absolute top-3 right-3">

@@ -3,7 +3,15 @@ import { ReactNode, useRef, useState } from 'react'
 import * as TooltipPrimitive from '@radix-ui/react-tooltip'
 import { AnimatePresence, motion, useAnimation } from 'framer-motion'
 
-export default function Tooltip({ children, content, fullWidth }: { children: ReactNode; content: ReactNode | string; fullWidth?: boolean }) {
+export default function Tooltip({
+  children,
+  content,
+  fullWidth,
+}: {
+  children: ReactNode
+  content: ReactNode | string
+  fullWidth?: boolean
+}) {
   const [openTooltip, setOpenTooltip] = useState(false)
   const mobileTooltipRef = useRef(null)
 
@@ -25,7 +33,10 @@ export default function Tooltip({ children, content, fullWidth }: { children: Re
 
   return (
     <>
-      <button type="button" className={`${fullWidth ? 'w-full' : 'inline-flex'} sm:hidden`} onClick={() => setOpenTooltip(true)}>
+      <button
+        type="button"
+        className={`${fullWidth ? 'w-full' : 'inline-flex'} sm:hidden`}
+        onClick={() => setOpenTooltip(true)}>
         {children}
       </button>
       <AnimatePresence>
@@ -47,12 +58,17 @@ export default function Tooltip({ children, content, fullWidth }: { children: Re
               onDragEnd={handleDragEnd}
               dragElastic={{ top: 0, bottom: 1 }}
               dragConstraints={{ top: 0, bottom: 0 }}>
-              <div className={`rounded-t-4xl -mb-1 flex h-7 w-full items-center justify-center border-t border-gray-200 bg-white`}>
+              <div
+                className={`rounded-t-4xl -mb-1 flex h-7 w-full items-center justify-center border-t border-gray-200 bg-white`}>
                 <div className="-mr-1 h-1 w-6 rounded-full bg-gray-300 transition-all group-active:rotate-12" />
                 <div className="h-1 w-6 rounded-full bg-gray-300 transition-all group-active:-rotate-12" />
               </div>
               <div className="flex min-h-[150px] w-full items-center justify-center overflow-hidden bg-white align-middle shadow-xl">
-                {typeof content === 'string' ? <span className="block max-w-xs text-center text-sm text-gray-700">{content}</span> : content}
+                {typeof content === 'string' ? (
+                  <span className="block max-w-xs text-center text-sm text-gray-700">{content}</span>
+                ) : (
+                  content
+                )}
               </div>
             </motion.div>
             <motion.div

@@ -13,7 +13,10 @@ interface BranchButtonLoginOrAccountProps {
   classNameButtonLogout?: string
 }
 
-export const BranchButtonLoginOrAccount = ({ classNameButtonLogin, classNameButtonLogout }: BranchButtonLoginOrAccountProps) => {
+export const BranchButtonLoginOrAccount = ({
+  classNameButtonLogin,
+  classNameButtonLogout,
+}: BranchButtonLoginOrAccountProps) => {
   return (
     <BranchIsWalletConnected>
       <BranchIsAuthenticated>

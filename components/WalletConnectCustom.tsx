@@ -47,7 +47,11 @@ export const WalletConnectCustom = ({
 
               return (
                 <div className="">
-                  <button className={classNameConnected} onClick={openChainModal} style={{ display: 'flex', alignItems: 'center' }} type="button">
+                  <button
+                    className={classNameConnected}
+                    onClick={openChainModal}
+                    style={{ display: 'flex', alignItems: 'center' }}
+                    type="button">
                     {chain.hasIcon && (
                       <div
                         style={{

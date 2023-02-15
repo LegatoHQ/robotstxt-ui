@@ -51,7 +51,11 @@ export const ModalPanel = ({ children, className, hideModal, position = 'right' 
 
   return (
     <>
-      <animated.div onClick={handleCloseModal} className={'fixed inset-0 z-10'} style={{ ...animateBackground, zIndex: 999 }} />
+      <animated.div
+        onClick={handleCloseModal}
+        className={'fixed inset-0 z-10'}
+        style={{ ...animateBackground, zIndex: 999 }}
+      />
       <animated.div className={stylePanel} style={{ ...animatePanel, zIndex: 1000 }}>
         <div>{children}</div>
       </animated.div>

@@ -16,7 +16,10 @@ export const licensesOptions = [
     id: 'Exclusive Commercial Rights with No Creator Retention (“EXCLUSIVE”)',
     value: 'https://arweave.net/zmc1WTspIhFyVY82bwfAIcIExLFH5lUcHHUN0wXg4W8/1',
   },
-  { id: 'Non-Exclusive Commercial Rights (“COMMERCIAL”)', value: 'https://arweave.net/zmc1WTspIhFyVY82bwfAIcIExLFH5lUcHHUN0wXg4W8/2' },
+  {
+    id: 'Non-Exclusive Commercial Rights (“COMMERCIAL”)',
+    value: 'https://arweave.net/zmc1WTspIhFyVY82bwfAIcIExLFH5lUcHHUN0wXg4W8/2',
+  },
   {
     id: 'Non-Exclusive Commercial Rights with Creator Retention & Hate Speech Termination (“COMMERCIAL-NO-HATE”)',
     value: 'https://arweave.net/zmc1WTspIhFyVY82bwfAIcIExLFH5lUcHHUN0wXg4W8/3',
@@ -130,7 +133,9 @@ export const WriteLicense: FC<{ onSuccess?: () => {} }> = ({ onSuccess }) => {
           </div>
         )}
         renderSuggestionsContainer={({ containerProps, children }) => (
-          <div {...containerProps} className="mt-1 w-full overflow-hidden rounded-lg bg-white shadow-xl dark:bg-black/90">
+          <div
+            {...containerProps}
+            className="mt-1 w-full overflow-hidden rounded-lg bg-white shadow-xl dark:bg-black/90">
             {children}
           </div>
         )}
@@ -143,7 +148,9 @@ export const WriteLicense: FC<{ onSuccess?: () => {} }> = ({ onSuccess }) => {
           setInfo(e.currentTarget.value)
         }}
       />
-      {contractWrite.isError && <div className="text-center text-sm font-semibold text-red-500">{contractWrite.error?.message}</div>}
+      {contractWrite.isError && (
+        <div className="text-center text-sm font-semibold text-red-500">{contractWrite.error?.message}</div>
+      )}
       <button
         className={cn(
           'relative w-min cursor-pointer rounded-full bg-[#9146FF] px-12 py-4 font-semibold text-white shadow-xl dark:text-white dark:placeholder:text-gray-600',

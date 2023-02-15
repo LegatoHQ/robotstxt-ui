@@ -33,8 +33,13 @@ export const ButtonSIWELogin = ({ className, label, disabled, children, styled }
   })
 
   return (
-    <button disabled={disabled} onClick={handleCreateMessage} className={cn('ButtonSIWELogin relative', { styled: styled }, className)}>
-      {isLoading && <span className="lds-dual-ring light absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />}
+    <button
+      disabled={disabled}
+      onClick={handleCreateMessage}
+      className={cn('ButtonSIWELogin relative', { styled: styled }, className)}>
+      {isLoading && (
+        <span className="lds-dual-ring light absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
+      )}
       <span className={labelClasses}>{children || label || 'Logout'}</span>
     </button>
   )

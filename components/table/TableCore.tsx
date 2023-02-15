@@ -59,7 +59,11 @@ export function TableCore({ className, columns, data, rowExpanded }: TableProps)
   return (
     <div className={className}>
       <table className="w-full overflow-hidden " {...getTableProps()}>
-        <TableHead defaultStyle headerGroups={headerGroups} className=" bg-white text-neutral-700 dark:bg-neutral-800 dark:text-neutral-100" />
+        <TableHead
+          defaultStyle
+          headerGroups={headerGroups}
+          className=" bg-white text-neutral-700 dark:bg-neutral-800 dark:text-neutral-100"
+        />
         <TableBody
           // className="text-neutral-700"
           page={page}

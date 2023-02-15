@@ -16,7 +16,9 @@ export const CantBeEvilLicenseDialog = () => (
       <Dialog.Overlay className="DialogOverlay" />
       <Dialog.Content className="DialogContent">
         <Dialog.Title className="DialogTitle">CantBeEvil</Dialog.Title>
-        <Dialog.Description className="DialogDescription">There are six variants of the CantBeEvil license:</Dialog.Description>
+        <Dialog.Description className="DialogDescription">
+          There are six variants of the CantBeEvil license:
+        </Dialog.Description>
         {licensesOptions.map(({ id, value }, index) => (
           <div key={index} className="flex flex-col overflow-hidden p-2 text-left">
             <a href={value} target="_blank" className="font-semibold underline" rel="noreferrer">

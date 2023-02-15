@@ -2,13 +2,13 @@ import { FC } from 'react'
 
 import { CheckCheck, X } from 'lucide-react'
 
-export const OwnerAlerts: FC<{ isIdle: boolean; isLoading: boolean; isSuccess: boolean; isError: boolean; isOwner: boolean }> = ({
-  isError,
-  isIdle,
-  isSuccess,
-  isOwner,
-  isLoading,
-}) => {
+export const OwnerAlerts: FC<{
+  isIdle: boolean
+  isLoading: boolean
+  isSuccess: boolean
+  isError: boolean
+  isOwner: boolean
+}> = ({ isError, isIdle, isSuccess, isOwner, isLoading }) => {
   if (isIdle || isLoading) return null
 
   if (isError)

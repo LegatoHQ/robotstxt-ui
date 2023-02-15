@@ -7,7 +7,17 @@ import Balancer from 'react-wrap-balancer'
 
 import { FADE_UP_ANIMATION_VARIANTS } from '@/lib/design'
 
-export default function Card({ title, description, demo, large }: { title: string; description: string; demo: ReactNode; large?: boolean }) {
+export default function Card({
+  title,
+  description,
+  demo,
+  large,
+}: {
+  title: string
+  description: string
+  demo: ReactNode
+  large?: boolean
+}) {
   return (
     <motion.div
       className={`relative col-span-1 h-96 overflow-hidden rounded-xl border border-gray-200 bg-white px-4 shadow-md dark:border-gray-800 dark:bg-neutral-800 dark:text-white ${
@@ -32,7 +42,9 @@ export default function Card({ title, description, demo, large }: { title: strin
                   />
                 ),
 
-                code: ({ node, ...props }) => <code {...props} className="rounded-sm bg-gray-100 px-1 py-0.5 font-mono font-medium text-gray-800" />,
+                code: ({ node, ...props }) => (
+                  <code {...props} className="rounded-sm bg-gray-100 px-1 py-0.5 font-mono font-medium text-gray-800" />
+                ),
               }}>
               {description}
             </ReactMarkdown>
