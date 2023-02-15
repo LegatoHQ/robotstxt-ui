@@ -8,7 +8,7 @@
     "export": "next export",
     "start": "next start",
     "lint": "next lint --fix",
-    "prettier": "prettier './src' --write",
+    "prettier": "prettier './components' --write",
     "prepare": "husky install",
     "prebuild": "prisma generate",
     "predev": "prisma generate"
