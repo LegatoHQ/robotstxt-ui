@@ -1,11 +1,11 @@
-import React from 'react'
+import React from 'react';
 
-import { Address, Balance } from '@turbo-eth/core-wagmi'
-import { formatEther } from 'ethers/lib/utils.js'
-import Link from 'next/link'
+import { Address, Balance } from '@turbo-eth/core-wagmi';
+import { formatEther } from 'ethers/lib/utils.js';
+import Link from 'next/link';
 
-import TableCore from './table/TableCore'
-import TimeFromEpoch from './time/TimeFromEpoch'
+import TableCore from './table/TableCore';
+import TimeFromEpoch from './time/TimeFromEpoch';
 
 /*
 {
@@ -38,12 +38,24 @@ function TransactionsTable({ data }: any) {
       {
         Header: 'From',
         accessor: 'from',
-        Cell: (props: any) => <Address address={props.value} truncate className="text-sm font-medium" />,
+        Cell: (props: any) => (
+          <Address
+            address={props.value}
+            truncate
+            className="text-sm font-medium"
+          />
+        ),
       },
       {
         Header: 'To',
         accessor: 'to',
-        Cell: (props: any) => <Address address={props.value} truncate className="text-sm font-medium" />,
+        Cell: (props: any) => (
+          <Address
+            address={props.value}
+            truncate
+            className="text-sm font-medium"
+          />
+        ),
       },
       {
         Header: 'Created',
@@ -53,7 +65,9 @@ function TransactionsTable({ data }: any) {
       {
         Header: 'Sent',
         accessor: 'value',
-        Cell: (props: any) => <span className="">{formatEther(props.value)}</span>,
+        Cell: (props: any) => (
+          <span className="">{formatEther(props.value)}</span>
+        ),
       },
       // {
       //   Header: () => null,
@@ -69,9 +83,15 @@ function TransactionsTable({ data }: any) {
       // },
     ],
     []
-  )
-  if (!data) return null
-  return <TableCore columns={columns} data={data} className="w-full overflow-hidden rounded-xl" />
+  );
+  if (!data) return null;
+  return (
+    <TableCore
+      columns={columns}
+      data={data}
+      className="w-full overflow-hidden rounded-xl"
+    />
+  );
 }
 
-export default TransactionsTable
+export default TransactionsTable;

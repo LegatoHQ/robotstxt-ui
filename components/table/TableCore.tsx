@@ -1,34 +1,45 @@
 // @ts-nocheck
-import React from 'react'
+import React from 'react';
 
-import { TableInstance, useExpanded, usePagination, useSortBy, useTable } from 'react-table'
+import {
+  TableInstance,
+  useExpanded,
+  usePagination,
+  useSortBy,
+  useTable,
+} from 'react-table';
 
-import TableBody from './TableBody'
-import TableHead from './TableHead'
-import TablePagination from './TablePagination'
+import TableBody from './TableBody';
+import TableHead from './TableHead';
+import TablePagination from './TablePagination';
 
 interface TableProps {
-  className?: string
-  data: Array<any>
-  columns: Array<any>
-  rowExpanded?: any
+  className?: string;
+  data: Array<any>;
+  columns: Array<any>;
+  rowExpanded?: any;
 }
 
 interface TableInstanceProps extends TableInstance<object> {
-  page?: number
-  canPreviousPage?: boolean
-  canNextPage?: boolean
-  pageCount?: number
-  gotoPage?: Function
-  nextPage?: Function
-  previousPage?: Function
-  setPageSize?: Function
-  pageSize?: number
-  pageOptions?: Array<number>
-  state: any
+  page?: number;
+  canPreviousPage?: boolean;
+  canNextPage?: boolean;
+  pageCount?: number;
+  gotoPage?: Function;
+  nextPage?: Function;
+  previousPage?: Function;
+  setPageSize?: Function;
+  pageSize?: number;
+  pageOptions?: Array<number>;
+  state: any;
 }
 
-export function TableCore({ className, columns, data, rowExpanded }: TableProps) {
+export function TableCore({
+  className,
+  columns,
+  data,
+  rowExpanded,
+}: TableProps) {
   const {
     getTableProps,
     getTableBodyProps,
@@ -53,7 +64,7 @@ export function TableCore({ className, columns, data, rowExpanded }: TableProps)
     useSortBy,
     useExpanded,
     usePagination
-  )
+  );
 
   // Render the UI for your table
   return (
@@ -85,7 +96,7 @@ export function TableCore({ className, columns, data, rowExpanded }: TableProps)
         canPreviousPage={canPreviousPage}
       />
     </div>
-  )
+  );
 }
 
-export default TableCore
+export default TableCore;

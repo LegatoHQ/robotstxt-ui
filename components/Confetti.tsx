@@ -1,10 +1,10 @@
-import React from 'react'
+import React from 'react';
 
-import ReactConfetti from 'react-confetti'
-import useWindowSize from 'react-use/lib/useWindowSize'
+import ReactConfetti from 'react-confetti';
+import useWindowSize from 'react-use/lib/useWindowSize';
 
 export const Confetti = () => {
-  const { width, height } = useWindowSize()
+  const { width, height } = useWindowSize();
   return (
     <ReactConfetti
       recycle={false}
@@ -20,5 +20,5 @@ export const Confetti = () => {
         zIndex: 1000,
       }}
     />
-  )
-}
+  );
+};

@@ -1,19 +1,24 @@
-import { Dispatch, SetStateAction, useState } from 'react'
+import { Dispatch, SetStateAction, useState } from 'react';
 
-import { ChevronDown } from 'lucide-react'
-import Image from 'next/image'
+import { ChevronDown } from 'lucide-react';
+import Image from 'next/image';
 
-import Modal from '@/components/shared/modal'
-import Popover from '@/components/shared/popover'
-import Tooltip from '@/components/shared/tooltip'
+import Modal from '@/components/shared/modal';
+import Popover from '@/components/shared/popover';
+import Tooltip from '@/components/shared/tooltip';
 
-export default function ComponentGrid({ setShowDemoModal }: { setShowDemoModal: Dispatch<SetStateAction<boolean>> }) {
-  const [openPopover, setOpenPopover] = useState(false)
+export default function ComponentGrid({
+  setShowDemoModal,
+}: {
+  setShowDemoModal: Dispatch<SetStateAction<boolean>>;
+}) {
+  const [openPopover, setOpenPopover] = useState(false);
   return (
     <div className="grid grid-cols-1 gap-5 md:grid-cols-3">
       <button
         onClick={() => setShowDemoModal(true)}
-        className="flex w-40 items-center justify-center rounded-md border border-gray-300 px-3 py-2 transition-all duration-75 hover:border-gray-800 focus:outline-none active:bg-gray-100">
+        className="flex w-40 items-center justify-center rounded-md border border-gray-300 px-3 py-2 transition-all duration-75 hover:border-gray-800 focus:outline-none active:bg-gray-100"
+      >
         <p className="text-gray-600">Modal</p>
       </button>
       <Popover
@@ -31,10 +36,15 @@ export default function ComponentGrid({ setShowDemoModal }: { setShowDemoModal: 
           </div>
         }
         openPopover={openPopover}
-        setOpenPopover={setOpenPopover}>
+        setOpenPopover={setOpenPopover}
+      >
         <button className="flex w-40 items-center justify-between rounded-md border border-gray-300 px-4 py-2 transition-all duration-75 hover:border-gray-800 focus:outline-none active:bg-gray-100">
           <p className="text-gray-600">Popover</p>
-          <ChevronDown className={`h-4 w-4 text-gray-600 ${openPopover ? 'rotate-180' : ''}`} />
+          <ChevronDown
+            className={`h-4 w-4 text-gray-600 ${
+              openPopover ? 'rotate-180' : ''
+            }`}
+          />
         </button>
       </Popover>
       <Tooltip content="Precedent is an opinionated collection of components, hooks, and utilities for your Next.js project.">
@@ -43,5 +53,5 @@ export default function ComponentGrid({ setShowDemoModal }: { setShowDemoModal: 
         </div>
       </Tooltip>
     </div>
-  )
+  );
 }

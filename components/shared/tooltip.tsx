@@ -1,33 +1,33 @@
-import { ReactNode, useRef, useState } from 'react'
+import { ReactNode, useRef, useState } from 'react';
 
-import * as TooltipPrimitive from '@radix-ui/react-tooltip'
-import { AnimatePresence, motion, useAnimation } from 'framer-motion'
+import * as TooltipPrimitive from '@radix-ui/react-tooltip';
+import { AnimatePresence, motion, useAnimation } from 'framer-motion';
 
 export default function Tooltip({
   children,
   content,
   fullWidth,
 }: {
-  children: ReactNode
-  content: ReactNode | string
-  fullWidth?: boolean
+  children: ReactNode;
+  content: ReactNode | string;
+  fullWidth?: boolean;
 }) {
-  const [openTooltip, setOpenTooltip] = useState(false)
-  const mobileTooltipRef = useRef(null)
+  const [openTooltip, setOpenTooltip] = useState(false);
+  const mobileTooltipRef = useRef(null);
 
-  const controls = useAnimation()
-  const transitionProps = { type: 'spring', stiffness: 500, damping: 30 }
+  const controls = useAnimation();
+  const transitionProps = { type: 'spring', stiffness: 500, damping: 30 };
 
   async function handleDragEnd(_: any, info: any) {
-    const offset = info.offset.y
-    const velocity = info.velocity.y
+    const offset = info.offset.y;
+    const velocity = info.velocity.y;
     // @ts-ignore
-    const height = mobileTooltipRef.current.getBoundingClientRect().height
+    const height = mobileTooltipRef.current.getBoundingClientRect().height;
     if (offset > height / 2 || velocity > 800) {
-      await controls.start({ y: '100%', transition: transitionProps })
-      setOpenTooltip(false)
+      await controls.start({ y: '100%', transition: transitionProps });
+      setOpenTooltip(false);
     } else {
-      controls.start({ y: 0, transition: transitionProps })
+      controls.start({ y: 0, transition: transitionProps });
     }
   }
 
@@ -36,7 +36,8 @@ export default function Tooltip({
       <button
         type="button"
         className={`${fullWidth ? 'w-full' : 'inline-flex'} sm:hidden`}
-        onClick={() => setOpenTooltip(true)}>
+        onClick={() => setOpenTooltip(true)}
+      >
         {children}
       </button>
       <AnimatePresence>
@@ -57,15 +58,19 @@ export default function Tooltip({
               dragDirectionLock
               onDragEnd={handleDragEnd}
               dragElastic={{ top: 0, bottom: 1 }}
-              dragConstraints={{ top: 0, bottom: 0 }}>
+              dragConstraints={{ top: 0, bottom: 0 }}
+            >
               <div
-                className={`rounded-t-4xl -mb-1 flex h-7 w-full items-center justify-center border-t border-gray-200 bg-white`}>
+                className={`rounded-t-4xl -mb-1 flex h-7 w-full items-center justify-center border-t border-gray-200 bg-white`}
+              >
                 <div className="-mr-1 h-1 w-6 rounded-full bg-gray-300 transition-all group-active:rotate-12" />
                 <div className="h-1 w-6 rounded-full bg-gray-300 transition-all group-active:-rotate-12" />
               </div>
               <div className="flex min-h-[150px] w-full items-center justify-center overflow-hidden bg-white align-middle shadow-xl">
                 {typeof content === 'string' ? (
-                  <span className="block max-w-xs text-center text-sm text-gray-700">{content}</span>
+                  <span className="block max-w-xs text-center text-sm text-gray-700">
+                    {content}
+                  </span>
                 ) : (
                   content
                 )}
@@ -90,11 +95,14 @@ export default function Tooltip({
           <TooltipPrimitive.Content
             sideOffset={4}
             side="top"
-            className="z-30 hidden animate-slide-up-fade items-center overflow-hidden rounded-md border border-gray-200 bg-white drop-shadow-lg sm:block">
+            className="z-30 hidden animate-slide-up-fade items-center overflow-hidden rounded-md border border-gray-200 bg-white drop-shadow-lg sm:block"
+          >
             <TooltipPrimitive.Arrow className="fill-current text-white" />
             {typeof content === 'string' ? (
               <div className="p-5">
-                <span className="block max-w-xs text-center text-sm text-gray-700">{content}</span>
+                <span className="block max-w-xs text-center text-sm text-gray-700">
+                  {content}
+                </span>
               </div>
             ) : (
               content
@@ -104,5 +112,5 @@ export default function Tooltip({
         </TooltipPrimitive.Root>
       </TooltipPrimitive.Provider>
     </>
-  )
+  );
 }

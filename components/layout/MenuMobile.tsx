@@ -1,16 +1,21 @@
-import * as React from 'react'
+import * as React from 'react';
 
-import classNames from 'classnames'
-import { FaGithub, FaTwitter } from 'react-icons/fa'
-import { useModal } from 'react-modal-hook'
+import classNames from 'classnames';
+import { FaGithub, FaTwitter } from 'react-icons/fa';
+import { useModal } from 'react-modal-hook';
 
-import { SITE_EMOJI, SITE_NAME, SOCIAL_GITHUB, SOCIAL_TWITTER } from '@/lib/constants'
+import {
+  SITE_EMOJI,
+  SITE_NAME,
+  SOCIAL_GITHUB,
+  SOCIAL_TWITTER,
+} from '@/lib/constants';
 
-import ModalDynamic from '../modal/ModalDynamic'
-import { LinkComponent } from '../shared/LinkComponent'
+import ModalDynamic from '../modal/ModalDynamic';
+import { LinkComponent } from '../shared/LinkComponent';
 interface MenuMobileProps {
-  className?: string
-  children: React.ReactNode
+  className?: string;
+  children: React.ReactNode;
 }
 
 export const MenuMobile = ({ className, children }: MenuMobileProps) => {
@@ -18,11 +23,15 @@ export const MenuMobile = ({ className, children }: MenuMobileProps) => {
     <ModalDynamic hideModal={hideModal}>
       <div
         style={{ background: '#FFF' }}
-        className="flex h-full max-h-full min-h-[620px] w-full min-w-[320px] max-w-full flex-col overflow-auto rounded-lg p-8 py-10">
+        className="flex h-full max-h-full min-h-[620px] w-full min-w-[320px] max-w-full flex-col overflow-auto rounded-lg p-8 py-10"
+      >
         <div className="flex-1">
           <div className="flex-center flex flex-col">
             <div className="text-center">
-              <LinkComponent href="/" className="flex w-full flex-1 items-center text-xl">
+              <LinkComponent
+                href="/"
+                className="flex w-full flex-1 items-center text-xl"
+              >
                 <span className="mr-1">{SITE_EMOJI}</span>
                 <h1 className="font-light">{SITE_NAME}</h1>
               </LinkComponent>
@@ -41,7 +50,8 @@ export const MenuMobile = ({ className, children }: MenuMobileProps) => {
           <a
             className=" my-2 text-xs"
             href="https://legatohq:w
-          .com/">
+          .com/"
+          >
             Built by Legato Labs
           </a>
           <div className="mt-2 flex items-center">
@@ -56,14 +66,14 @@ export const MenuMobile = ({ className, children }: MenuMobileProps) => {
         </div>
       </div>
     </ModalDynamic>
-  ))
+  ));
 
-  const classes = classNames(className, 'MenuMobile', 'cursor-pointer')
+  const classes = classNames(className, 'MenuMobile', 'cursor-pointer');
   return (
     <span onClick={showModal} className={classes}>
       {children}
     </span>
-  )
-}
+  );
+};
 
-export default MenuMobile
+export default MenuMobile;

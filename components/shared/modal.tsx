@@ -1,8 +1,14 @@
-import { Dispatch, SetStateAction, useCallback, useEffect, useRef } from 'react'
+import {
+  Dispatch,
+  SetStateAction,
+  useCallback,
+  useEffect,
+  useRef,
+} from 'react';
 
-import FocusTrap from 'focus-trap-react'
-import { AnimatePresence, motion, useAnimation } from 'framer-motion'
-import { useRouter } from 'next/router'
+import FocusTrap from 'focus-trap-react';
+import { AnimatePresence, motion, useAnimation } from 'framer-motion';
+import { useRouter } from 'next/router';
 
 export default function Modal({
   children,
@@ -11,62 +17,62 @@ export default function Modal({
   bgColor = 'bg-white',
   closeWithX,
 }: {
-  children: React.ReactNode
-  showModal: boolean
-  setShowModal: Dispatch<SetStateAction<boolean>>
-  bgColor?: string
-  closeWithX?: boolean
+  children: React.ReactNode;
+  showModal: boolean;
+  setShowModal: Dispatch<SetStateAction<boolean>>;
+  bgColor?: string;
+  closeWithX?: boolean;
 }) {
-  const router = useRouter()
-  const { key } = router.query
-  const mobileModalRef = useRef(null)
-  const desktopModalRef = useRef(null)
+  const router = useRouter();
+  const { key } = router.query;
+  const mobileModalRef = useRef(null);
+  const desktopModalRef = useRef(null);
 
   const closeModal = useCallback(
     (closeWithX?: boolean) => {
       if (closeWithX) {
-        return
+        return;
       } else if (key) {
-        router.push('/')
+        router.push('/');
       } else {
-        setShowModal(false)
+        setShowModal(false);
       }
     },
     [key, router, setShowModal]
-  )
+  );
 
   const onKeyDown = useCallback((e: KeyboardEvent) => {
     if (e.key === 'Escape' && !closeWithX) {
-      setShowModal(false)
+      setShowModal(false);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, []);
 
   useEffect(() => {
-    document.addEventListener('keydown', onKeyDown)
-    return () => document.removeEventListener('keydown', onKeyDown)
-  }, [onKeyDown])
+    document.addEventListener('keydown', onKeyDown);
+    return () => document.removeEventListener('keydown', onKeyDown);
+  }, [onKeyDown]);
 
-  const controls = useAnimation()
-  const transitionProps = { type: 'spring', stiffness: 500, damping: 30 }
+  const controls = useAnimation();
+  const transitionProps = { type: 'spring', stiffness: 500, damping: 30 };
   useEffect(() => {
     controls.start({
       y: 0,
       transition: transitionProps,
-    })
+    });
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, []);
 
   async function handleDragEnd(_: any, info: any) {
-    const offset = info.offset.y
-    const velocity = info.velocity.y
+    const offset = info.offset.y;
+    const velocity = info.velocity.y;
     // @ts-ignore
-    const height = mobileModalRef.current.getBoundingClientRect().height
+    const height = mobileModalRef.current.getBoundingClientRect().height;
     if (offset > height / 2 || velocity > 800) {
-      await controls.start({ y: '100%', transition: transitionProps })
-      closeModal()
+      await controls.start({ y: '100%', transition: transitionProps });
+      closeModal();
     } else {
-      controls.start({ y: 0, transition: transitionProps })
+      controls.start({ y: 0, transition: transitionProps });
     }
   }
 
@@ -87,9 +93,11 @@ export default function Modal({
               dragDirectionLock
               onDragEnd={handleDragEnd}
               dragElastic={{ top: 0, bottom: 1 }}
-              dragConstraints={{ top: 0, bottom: 0 }}>
+              dragConstraints={{ top: 0, bottom: 0 }}
+            >
               <div
-                className={`h-7 ${bgColor} rounded-t-4xl -mb-1 flex w-full items-center justify-center border-t border-gray-200`}>
+                className={`h-7 ${bgColor} rounded-t-4xl -mb-1 flex w-full items-center justify-center border-t border-gray-200`}
+              >
                 <div className="-mr-1 h-1 w-6 rounded-full bg-gray-300 transition-all group-active:rotate-12" />
                 <div className="h-1 w-6 rounded-full bg-gray-300 transition-all group-active:-rotate-12" />
               </div>
@@ -104,9 +112,10 @@ export default function Modal({
               exit={{ scale: 0.95 }}
               onMouseDown={(e) => {
                 if (desktopModalRef.current === e.target) {
-                  closeModal(closeWithX)
+                  closeModal(closeWithX);
                 }
-              }}>
+              }}
+            >
               {children}
             </motion.div>
             <motion.div
@@ -121,5 +130,5 @@ export default function Modal({
         </FocusTrap>
       )}
     </AnimatePresence>
-  )
+  );
 }

@@ -1,9 +1,9 @@
-import * as React from 'react'
+import * as React from 'react';
 
-import { ConnectButton } from '@rainbow-me/rainbowkit'
+import { ConnectButton } from '@rainbow-me/rainbowkit';
 
 interface WalletConnectProps {
-  className?: string
+  className?: string;
 }
 
 export const WalletConnect = ({ className }: WalletConnectProps) => {
@@ -21,7 +21,7 @@ export const WalletConnect = ({ className }: WalletConnectProps) => {
         }}
       />
     </span>
-  )
-}
+  );
+};
 
-export default WalletConnect
+export default WalletConnect;

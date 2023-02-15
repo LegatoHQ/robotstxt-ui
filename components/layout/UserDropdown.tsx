@@ -1,22 +1,31 @@
-import { useState } from 'react'
+import { useState } from 'react';
 
-import { WalletAddress } from '@turbo-eth/core-wagmi'
-import { motion } from 'framer-motion'
-import { BinaryIcon, DatabaseIcon, LayoutDashboard, LogOutIcon, Wallet } from 'lucide-react'
-import Link from 'next/link'
+import { WalletAddress } from '@turbo-eth/core-wagmi';
+import { motion } from 'framer-motion';
+import {
+  BinaryIcon,
+  DatabaseIcon,
+  LayoutDashboard,
+  LogOutIcon,
+  Wallet,
+} from 'lucide-react';
+import Link from 'next/link';
 
-import Popover from '@/components/shared/popover'
-import { FADE_IN_ANIMATION_SETTINGS } from '@/lib/design'
+import Popover from '@/components/shared/popover';
+import { FADE_IN_ANIMATION_SETTINGS } from '@/lib/design';
 
-import BranchIsAuthenticated from '../branch/BranchIsAuthenticated'
-import ButtonSIWELogin from '../siwe/ButtonSIWELogin'
-import ButtonSIWELogout from '../siwe/ButtonSIWELogout'
+import BranchIsAuthenticated from '../branch/BranchIsAuthenticated';
+import ButtonSIWELogin from '../siwe/ButtonSIWELogin';
+import ButtonSIWELogout from '../siwe/ButtonSIWELogout';
 
 export default function UserDropdown() {
-  const [openPopover, setOpenPopover] = useState(false)
+  const [openPopover, setOpenPopover] = useState(false);
 
   return (
-    <motion.div className="relative inline-block text-left text-neutral-700" {...FADE_IN_ANIMATION_SETTINGS}>
+    <motion.div
+      className="relative inline-block text-left text-neutral-700"
+      {...FADE_IN_ANIMATION_SETTINGS}
+    >
       <Popover
         content={
           <></>
@@ -51,14 +60,19 @@ export default function UserDropdown() {
         }
         align="end"
         openPopover={openPopover}
-        setOpenPopover={setOpenPopover}>
+        setOpenPopover={setOpenPopover}
+      >
         <button
           // onClick={() => setOpenPopover(!openPopover)}
-          className="bg-card flex items-center justify-center overflow-hidden rounded-full p-2 px-4 transition-all duration-75 hover:bg-neutral-100 focus:outline-none active:scale-95 ">
-          <WalletAddress truncate className="font-raleway font-semibold leading-4 tracking-[0.08em]" />
+          className="bg-card flex items-center justify-center overflow-hidden rounded-full p-2 px-4 transition-all duration-75 hover:bg-neutral-100 focus:outline-none active:scale-95 "
+        >
+          <WalletAddress
+            truncate
+            className="font-raleway font-semibold leading-4 tracking-[0.08em]"
+          />
           <Wallet className="ml-3 h-6 w-6" />
         </button>
       </Popover>
     </motion.div>
-  )
+  );
 }

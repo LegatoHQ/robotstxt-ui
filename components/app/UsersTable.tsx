@@ -1,10 +1,10 @@
-import React from 'react'
+import React from 'react';
 
-import { Address } from '@turbo-eth/core-wagmi'
-import Link from 'next/link'
+import { Address } from '@turbo-eth/core-wagmi';
+import Link from 'next/link';
 
-import TableCore from '../table/TableCore'
-import TimeFromEpoch from '../time/TimeFromEpoch'
+import TableCore from '../table/TableCore';
+import TimeFromEpoch from '../time/TimeFromEpoch';
 
 function UsersTable({ data, className }: any) {
   const columns = React.useMemo(
@@ -12,7 +12,13 @@ function UsersTable({ data, className }: any) {
       {
         Header: 'Address',
         accessor: 'address',
-        Cell: (props: any) => <Address address={props.value} truncate className="text-sm font-medium" />,
+        Cell: (props: any) => (
+          <Address
+            address={props.value}
+            truncate
+            className="text-sm font-medium"
+          />
+        ),
       },
       {
         Header: 'Created',
@@ -33,9 +39,9 @@ function UsersTable({ data, className }: any) {
       },
     ],
     []
-  )
-  if (!data) return null
-  return <TableCore columns={columns} data={data} className={className} />
+  );
+  if (!data) return null;
+  return <TableCore columns={columns} data={data} className={className} />;
 }
 
-export default UsersTable
+export default UsersTable;

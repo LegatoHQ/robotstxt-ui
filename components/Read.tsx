@@ -1,28 +1,28 @@
-import { useState } from 'react'
+import { useState } from 'react';
 
-import cn from 'classnames'
-import { isAddress } from 'ethers/lib/utils.js'
-import { Verified } from 'lucide-react'
-import { Collapse } from 'react-collapse'
-import { ColorRing } from 'react-loader-spinner'
-import { useContractRead, useNetwork } from 'wagmi'
+import cn from 'classnames';
+import { isAddress } from 'ethers/lib/utils.js';
+import { Verified } from 'lucide-react';
+import { Collapse } from 'react-collapse';
+import { ColorRing } from 'react-loader-spinner';
+import { useContractRead, useNetwork } from 'wagmi';
 
-import { getContractsFor } from '@/lib/actions/contractOptions'
-import { RobotTxt__factory } from '@/lib/typechain-types'
+import { getContractsFor } from '@/lib/actions/contractOptions';
+import { RobotTxt__factory } from '@/lib/typechain-types';
 
 function isLink(str: string) {
   try {
-    new URL(str)
-    return true
+    new URL(str);
+    return true;
   } catch (e) {
-    return false
+    return false;
   }
 }
 
 export const Read = () => {
-  const { chain } = useNetwork()
-  const contracts = getContractsFor(chain?.id)
-  const [address, setAddress] = useState<string>('')
+  const { chain } = useNetwork();
+  const contracts = getContractsFor(chain?.id);
+  const [address, setAddress] = useState<string>('');
 
   const contractRead = useContractRead({
     address: contracts.ROBOTS_TXT,
@@ -31,10 +31,10 @@ export const Read = () => {
     abi: RobotTxt__factory.abi,
     args: [address as `0x${string}`],
     enabled: isAddress(address),
-  })
+  });
 
-  const isFetchedAndEmpty = !contractRead.data && contractRead.isFetched
-  const [licenseURI, licenseInfo] = contractRead.data || []
+  const isFetchedAndEmpty = !contractRead.data && contractRead.isFetched;
+  const [licenseURI, licenseInfo] = contractRead.data || [];
 
   return (
     <div className="flex w-full max-w-full flex-col gap-2 text-black dark:text-white">
@@ -58,9 +58,15 @@ export const Read = () => {
           </div>
         )}
       </div>
-      {isFetchedAndEmpty && <div className="text-center text-orange-500">No license found for this address</div>}
+      {isFetchedAndEmpty && (
+        <div className="text-center text-orange-500">
+          No license found for this address
+        </div>
+      )}
       {address && !isAddress(address) && (
-        <div className="text-center text-purple-600">Does not look like a valid address</div>
+        <div className="text-center text-purple-600">
+          Does not look like a valid address
+        </div>
       )}
       <Collapse isOpened={Boolean(contractRead.isSuccess && contractRead.data)}>
         <div className="mt-4 flex w-full items-center gap-2 bg-black/10 p-4 text-left dark:bg-white/10">
@@ -69,20 +75,31 @@ export const Read = () => {
             <div className="text-gray-600">License URI:</div>
             {isLink(licenseURI || '') ? (
               <>
-                <a href={licenseURI} className="underline" target="_blank" rel="noreferrer">
+                <a
+                  href={licenseURI}
+                  className="underline"
+                  target="_blank"
+                  rel="noreferrer"
+                >
                   {licenseURI}
                 </a>
-                <div className="text-gray-900 dark:text-white">{licenseInfo}</div>
+                <div className="text-gray-900 dark:text-white">
+                  {licenseInfo}
+                </div>
               </>
             ) : (
               <>
-                <div className="text-gray-900 dark:text-white">{licenseURI}</div>
-                <div className="text-gray-900 dark:text-white">{licenseInfo}</div>
+                <div className="text-gray-900 dark:text-white">
+                  {licenseURI}
+                </div>
+                <div className="text-gray-900 dark:text-white">
+                  {licenseInfo}
+                </div>
               </>
             )}
           </div>
         </div>
       </Collapse>
     </div>
-  )
-}
+  );
+};

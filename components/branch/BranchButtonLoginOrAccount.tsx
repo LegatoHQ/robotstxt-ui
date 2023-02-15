@@ -1,16 +1,16 @@
-import * as React from 'react'
+import * as React from 'react';
 
-import Link from 'next/link'
+import Link from 'next/link';
 
-import BranchIsAuthenticated from '@/components/branch/BranchIsAuthenticated'
-import BranchIsWalletConnected from '@/components/branch/BranchIsWalletConnected'
-import ButtonSIWELogin from '@/components/siwe/ButtonSIWELogin'
-import ButtonSIWELogout from '@/components/siwe/ButtonSIWELogout'
+import BranchIsAuthenticated from '@/components/branch/BranchIsAuthenticated';
+import BranchIsWalletConnected from '@/components/branch/BranchIsWalletConnected';
+import ButtonSIWELogin from '@/components/siwe/ButtonSIWELogin';
+import ButtonSIWELogout from '@/components/siwe/ButtonSIWELogout';
 
 interface BranchButtonLoginOrAccountProps {
-  className?: string
-  classNameButtonLogin?: string
-  classNameButtonLogout?: string
+  className?: string;
+  classNameButtonLogin?: string;
+  classNameButtonLogout?: string;
 }
 
 export const BranchButtonLoginOrAccount = ({
@@ -30,7 +30,7 @@ export const BranchButtonLoginOrAccount = ({
       </BranchIsAuthenticated>
       <></>
     </BranchIsWalletConnected>
-  )
-}
+  );
+};
 
-export default BranchButtonLoginOrAccount
+export default BranchButtonLoginOrAccount;

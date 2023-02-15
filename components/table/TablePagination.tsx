@@ -1,18 +1,18 @@
-import { ReactElement } from 'react'
+import { ReactElement } from 'react';
 
-import classNames from 'clsx'
+import classNames from 'clsx';
 
 interface ITablePagination {
-  canPreviousPage: Function
-  canNextPage: Function
-  pageCount: number
-  pageIndex: number
-  pageSize: number
-  pageOptions: Function
-  gotoPage: Function
-  nextPage: Function
-  previousPage: Function
-  setPageSize: Function
+  canPreviousPage: Function;
+  canNextPage: Function;
+  pageCount: number;
+  pageIndex: number;
+  pageSize: number;
+  pageOptions: Function;
+  gotoPage: Function;
+  nextPage: Function;
+  previousPage: Function;
+  setPageSize: Function;
 }
 
 /**
@@ -33,21 +33,37 @@ export const TablePagination = ({
 }: ITablePagination): ReactElement => {
   const styleBase = classNames(
     'pagination flex justify-between items-center bg-white text-neutral-700 dark:bg-neutral-800 dark:text-neutral-100 shadow-sm px-3 py-5 rounded-b-lg'
-  )
+  );
 
   return (
     <div className={styleBase}>
       <div className="">
-        <button className="tag tag-smoke" onClick={() => gotoPage(0)} disabled={!canPreviousPage}>
+        <button
+          className="tag tag-smoke"
+          onClick={() => gotoPage(0)}
+          disabled={!canPreviousPage}
+        >
           {'<<'}
         </button>{' '}
-        <button className="tag tag-smoke" onClick={() => previousPage()} disabled={!canPreviousPage}>
+        <button
+          className="tag tag-smoke"
+          onClick={() => previousPage()}
+          disabled={!canPreviousPage}
+        >
           {'<'}
         </button>{' '}
-        <button className="tag tag-smoke" onClick={() => nextPage()} disabled={!canNextPage}>
+        <button
+          className="tag tag-smoke"
+          onClick={() => nextPage()}
+          disabled={!canNextPage}
+        >
           {'>'}
         </button>{' '}
-        <button className="tag tag-smoke" onClick={() => gotoPage(pageCount - 1)} disabled={!canNextPage}>
+        <button
+          className="tag tag-smoke"
+          onClick={() => gotoPage(pageCount - 1)}
+          disabled={!canNextPage}
+        >
           {'>>'}
         </button>{' '}
         <span className="mx-2">
@@ -65,8 +81,8 @@ export const TablePagination = ({
               type="number"
               defaultValue={pageIndex + 1}
               onChange={(e) => {
-                const page = e.target.value ? Number(e.target.value) - 1 : 0
-                gotoPage(page)
+                const page = e.target.value ? Number(e.target.value) - 1 : 0;
+                gotoPage(page);
               }}
               style={{ width: '64px' }}
             />
@@ -78,16 +94,21 @@ export const TablePagination = ({
           className="tag tag-smoke text-xl"
           value={pageSize}
           onChange={(e) => {
-            setPageSize(Number(e.target.value))
-          }}>
+            setPageSize(Number(e.target.value));
+          }}
+        >
           {[5, 10, 20, 30, 40, 50].map((pageSizeParams) => (
-            <option className="text-xl" key={pageSizeParams} value={pageSizeParams}>
+            <option
+              className="text-xl"
+              key={pageSizeParams}
+              value={pageSizeParams}
+            >
               Show {pageSizeParams}
             </option>
           ))}
         </select>
       </div>
     </div>
-  )
-}
-export default TablePagination
+  );
+};
+export default TablePagination;

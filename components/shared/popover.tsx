@@ -1,7 +1,7 @@
-import { ReactNode, useRef } from 'react'
+import { ReactNode, useRef } from 'react';
 
-import * as PopoverPrimitive from '@radix-ui/react-popover'
-import { AnimatePresence, motion, useAnimation } from 'framer-motion'
+import * as PopoverPrimitive from '@radix-ui/react-popover';
+import { AnimatePresence, motion, useAnimation } from 'framer-motion';
 
 export default function Popover({
   children,
@@ -10,26 +10,27 @@ export default function Popover({
   openPopover,
   setOpenPopover,
 }: {
-  children: ReactNode
-  content: ReactNode | string
-  align?: 'center' | 'start' | 'end'
-  openPopover: boolean
+  children: ReactNode;
+  content: ReactNode | string;
+  align?: 'center' | 'start' | 'end';
+  openPopover: boolean;
   // eslint-disable-next-line unused-imports/no-unused-vars
-  setOpenPopover: (open: boolean) => void
+  setOpenPopover: (open: boolean) => void;
 }) {
-  const mobileTooltipRef = useRef<HTMLDivElement>(null)
-  const controls = useAnimation()
-  const transitionProps = { type: 'spring', stiffness: 500, damping: 30 }
+  const mobileTooltipRef = useRef<HTMLDivElement>(null);
+  const controls = useAnimation();
+  const transitionProps = { type: 'spring', stiffness: 500, damping: 30 };
 
   async function handleDragEnd(_: any, info: any) {
-    const offset = info.offset.y
-    const velocity = info.velocity.y
-    const height = mobileTooltipRef.current?.getBoundingClientRect().height || 0
+    const offset = info.offset.y;
+    const velocity = info.velocity.y;
+    const height =
+      mobileTooltipRef.current?.getBoundingClientRect().height || 0;
     if (offset > height / 2 || velocity > 800) {
-      await controls.start({ y: '100%', transition: transitionProps })
-      setOpenPopover(false)
+      await controls.start({ y: '100%', transition: transitionProps });
+      setOpenPopover(false);
     } else {
-      controls.start({ y: 0, transition: transitionProps })
+      controls.start({ y: 0, transition: transitionProps });
     }
   }
   return (
@@ -53,9 +54,11 @@ export default function Popover({
               dragDirectionLock
               onDragEnd={handleDragEnd}
               dragElastic={{ top: 0, bottom: 1 }}
-              dragConstraints={{ top: 0, bottom: 0 }}>
+              dragConstraints={{ top: 0, bottom: 0 }}
+            >
               <div
-                className={`rounded-t-4xl -mb-1 flex h-7 w-full items-center justify-center bg-white dark:bg-neutral-700 `}>
+                className={`rounded-t-4xl -mb-1 flex h-7 w-full items-center justify-center bg-white dark:bg-neutral-700 `}
+              >
                 <div className="-mr-1 h-1 w-6 rounded-full bg-gray-300 transition-all group-active:rotate-12" />
                 <div className="h-1 w-6 rounded-full bg-gray-300 transition-all group-active:-rotate-12" />
               </div>
@@ -81,10 +84,11 @@ export default function Popover({
         <PopoverPrimitive.Content
           sideOffset={4}
           align={align}
-          className="z-20 hidden animate-slide-up-fade items-center rounded-md bg-white shadow-md dark:border-gray-800 dark:bg-neutral-800 md:block">
+          className="z-20 hidden animate-slide-up-fade items-center rounded-md bg-white shadow-md dark:border-gray-800 dark:bg-neutral-800 md:block"
+        >
           {content}
         </PopoverPrimitive.Content>
       </PopoverPrimitive.Root>
     </>
-  )
+  );
 }

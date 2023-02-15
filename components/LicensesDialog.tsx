@@ -1,9 +1,9 @@
-import React from 'react'
+import React from 'react';
 
 // @ts-ignore
-import * as Dialog from '@radix-ui/react-dialog'
+import * as Dialog from '@radix-ui/react-dialog';
 
-import { licensesOptions } from './WriteLicense'
+import { licensesOptions } from './WriteLicense';
 
 export const CantBeEvilLicenseDialog = () => (
   <Dialog.Root>
@@ -20,8 +20,16 @@ export const CantBeEvilLicenseDialog = () => (
           There are six variants of the CantBeEvil license:
         </Dialog.Description>
         {licensesOptions.map(({ id, value }, index) => (
-          <div key={index} className="flex flex-col overflow-hidden p-2 text-left">
-            <a href={value} target="_blank" className="font-semibold underline" rel="noreferrer">
+          <div
+            key={index}
+            className="flex flex-col overflow-hidden p-2 text-left"
+          >
+            <a
+              href={value}
+              target="_blank"
+              className="font-semibold underline"
+              rel="noreferrer"
+            >
               {id}
             </a>
           </div>
@@ -35,4 +43,4 @@ export const CantBeEvilLicenseDialog = () => (
       </Dialog.Content>
     </Dialog.Portal>
   </Dialog.Root>
-)
+);
