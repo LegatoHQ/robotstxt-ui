@@ -79,7 +79,7 @@ export default function Home() {
             music, and other content.
           </Balancer>
           <CantBeEvilLicenseDialog />
-         <ContractsInfo/> 
+          <ContractsInfo />
         </motion.p>
       </motion.div>
     </>

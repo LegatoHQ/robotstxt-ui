@@ -25,11 +25,7 @@ export const mainNetContractOptions: IContractOptions = {
   ROBOTS_TXT: '0x53F63a626B7218aDbDf71e87Fbd83C339feBa6e6',
   ROBOT_TOKEN: '0x9D174aAB6ca9d0Aa07aEefab23cF52dF6F337Fa8',
 }
-export const allContractOptions: IContractOptions[] = [
-                                          mumbaiContractOptions, 
-                                          polygonContractOptions, 
-                                          mainNetContractOptions
-                                        ]
+export const allContractOptions: IContractOptions[] = [mumbaiContractOptions, polygonContractOptions, mainNetContractOptions]
 
 export const getContractsFor = (chainId?: number): IContractOptions =>
   allContractOptions.find((opt: IContractOptions) => opt.CHAIN_ID === chainId) || mumbaiContractOptions
