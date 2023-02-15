@@ -13,6 +13,7 @@ import { Read } from '@/components/Read'
 import { ReadWriteToggle } from '@/components/ReadWriteToggle'
 import { WriteLicense } from '@/components/WriteLicense'
 import { FADE_DOWN_ANIMATION_VARIANTS } from '@/lib/design'
+import { ContractsInfo } from '@/components/ContractsInfo'
 
 export default function Home() {
   const [active, setActive] = useState<'read' | 'write'>('read')
@@ -78,6 +79,7 @@ export default function Home() {
             music, and other content.
           </Balancer>
           <CantBeEvilLicenseDialog />
+         <ContractsInfo/> 
         </motion.p>
       </motion.div>
     </>
