@@ -7,6 +7,7 @@ import Balancer from 'react-wrap-balancer'
 
 import { FADE_UP_ANIMATION_VARIANTS } from '@/lib/design'
 
+
 export default function Card({ title, description, demo, large }: { title: string; description: string; demo: ReactNode; large?: boolean }) {
   return (
     <motion.div
