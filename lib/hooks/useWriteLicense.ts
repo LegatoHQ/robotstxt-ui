@@ -80,14 +80,18 @@ export const useWriteLicense = (onSuccess?: () => void) => {
     onError: (error: Error) => {
       toast.error(error.message)
     },
-    onSettled: () => {},
+    onSettled: () => {
+    },
     onSuccess: () => {
-      toast.info('Setting License...')
+      toast.info('Setting License...',{autoClose: false})
     },
   })
 
   const waitForTransaction = useWaitForTransaction({
     hash: contractWrite.data?.hash,
+    onSettled: () => {
+      toast.dismiss()
+    },
     onSuccess: () => {
       toast.success('License set') // setUri('');
       setAddress('')
@@ -99,7 +103,6 @@ export const useWriteLicense = (onSuccess?: () => void) => {
       console.error(error)
       toast.error(error.message)
     },
-    confirmations: 1,
     chainId: chain?.id,
     enabled: Boolean(contractWrite.data?.hash),
   })

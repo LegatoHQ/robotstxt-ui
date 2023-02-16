@@ -8,7 +8,7 @@ export const ContractsInfo = () => {
   const { chain } = network
   const contracts = getContractsFor(chain?.id)
   return (
-    <div>
+    <div className='text-xs font-mono '>
       Contracts
       <div className="flex gap-2">
         <div className="uppercase">Robots.txt:</div>
@@ -18,6 +18,10 @@ export const ContractsInfo = () => {
         <div className="uppercase">Robot token:</div>
         <div>{contracts.ROBOT_TOKEN}</div>
       </div>
+      {/* <div className="flex gap-2 text-sm">
+        <div className="uppercase">RPC:</div>
+        <div>{chain?.rpcUrls.default.http}</div>
+      </div> */}
     </div>
   )
 }

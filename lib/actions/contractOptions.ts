@@ -16,12 +16,12 @@ export const mumbaiContractOptions: IContractOptions = {
 export const polygonContractOptions: IContractOptions = {
   CHAIN_ID: 137,
   RPC: 'https://polygon-mainnet.infura.io/v3/855f45a706ee4f5d8127b569538010d3',
-  ROBOTS_TXT: '0xbe2Fbb7F51A4966bD36BB41BBBe2CA931c5D07e6',
-  ROBOT_TOKEN: '0x034e8e3388bf9a8a6379a41926d41c4265198e55',
+  ROBOTS_TXT: '0x65a4b530A8A456f7b372Db49cd3e1Fa0AF36bA5A',
+  ROBOT_TOKEN: '0x1451c783CecbEc3dFee498CD49E40C61f4337eE3',
 }
 export const mainNetContractOptions: IContractOptions = {
   CHAIN_ID: 1,
-  RPC: 'https://eth.llamarpc.co',
+  RPC: 'https://mainnet.infura.io/v3/c97ed77531d74d5287facb6404446a0b',
   ROBOTS_TXT: '0x53F63a626B7218aDbDf71e87Fbd83C339feBa6e6',
   ROBOT_TOKEN: '0x9D174aAB6ca9d0Aa07aEefab23cF52dF6F337Fa8',
 }

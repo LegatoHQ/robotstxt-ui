@@ -7,6 +7,8 @@ import { alchemyProvider } from 'wagmi/providers/alchemy'
 import { jsonRpcProvider } from 'wagmi/providers/jsonRpc'
 
 import { ETH_CHAINS_PROD, ETH_CHAINS_TEST } from '@/lib/constants'
+import { allContractOptions, getContractsFor} from '@/lib/actions/contractOptions'
+import { polygon } from '@wagmi/chains'
 
 interface Props {
   children: ReactNode
@@ -14,25 +16,24 @@ interface Props {
 }
 
 export function RainbowKit(props: Props) {
+  // polygon.rpcUrls.default.http = ['https://rpc-mainnet.maticvigil.com/']
   const CHAINS = process.env.NODE_ENV === 'production' ? ETH_CHAINS_PROD : ETH_CHAINS_TEST
+  
   // const CHAINS = ETH_CHAINS_TEST
-  const { chains, provider } = configureChains(CHAINS, [
-    // alchemyProvider({
-    //   apiKey: process.env.NEXT_PUBLIC_ALCHEMY_API_KEY as string,
+  const { chains, provider } = configureChains(CHAINS,
+   [
+    jsonRpcProvider({
+      rpc: (chain) => ({
+        http: getContractsFor(chain.id).RPC,
+      }),
+    }),
+   ] 
+    // allContractOptions.map((contractOption) => {
+    //   return jsonRpcProvider({
+    //     rpc:()=>({http: contractOption.RPC , chainId: contractOption.CHAIN_ID}),
+    //   })
     // }),
-    jsonRpcProvider({
-      rpc: () => ({
-        chainId: [11155111],
-        http: 'https://crimson-dawn-layer.matic-testnet.discover.quiknode.pro/2f96338b3a272ff0801a885469489d340d782714',
-      }),
-    }),
-    jsonRpcProvider({
-      rpc: () => ({
-        chainId: [31337],
-        http: 'http://127.0.0.1:8545/',
-      }),
-    }),
-  ])
+  )
 
   const { connectors } = getDefaultWallets({
     appName: 'District Labs',

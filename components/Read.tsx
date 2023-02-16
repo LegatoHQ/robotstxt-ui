@@ -23,14 +23,17 @@ export const Read = () => {
   const { chain } = useNetwork()
   const contracts = getContractsFor(chain?.id)
   const [address, setAddress] = useState<string>('')
+  
 
   const contractRead = useContractRead({
     address: contracts.ROBOTS_TXT,
     functionName: 'licenseOf',
-    chainId: chain?.id,
     abi: RobotTxt__factory.abi,
     args: [address as `0x${string}`],
     enabled: isAddress(address),
+    onError(err) {
+      console.error(err)
+    },
   })
 
   const isFetchedAndEmpty = !contractRead.data && contractRead.isFetched
@@ -61,22 +64,25 @@ export const Read = () => {
       {isFetchedAndEmpty && <div className="text-center text-orange-500">No license found for this address</div>}
       {address && !isAddress(address) && <div className="text-center text-purple-600">Does not look like a valid address</div>}
       <Collapse isOpened={Boolean(contractRead.isSuccess && contractRead.data)}>
-        <div className="mt-4 flex w-full items-center gap-2 bg-black/10 p-4 text-left dark:bg-white/10">
+        <div className="mt-4 flex w-full rounded-lg items-center gap-2 bg-black/10 p-4 text-left dark:bg-white/10">
           <Verified className={cn('inline-block text-green-500')} />
-          <div>
-            <div className="text-gray-600">License URI:</div>
+          <div className=''>
+            <div className="text-gray-600">License:</div>
             {isLink(licenseURI || '') ? (
-              <>
+              <div className='gap-2 grid'>
                 <a href={licenseURI} className="underline" target="_blank" rel="noreferrer">
                   {licenseURI}
                 </a>
-                <div className="text-gray-900 dark:text-white">{licenseInfo}</div>
-              </>
+              <div className="text-gray-600">Info:</div>
+                <a href={licenseURI} className="underline" target="_blank" rel="noreferrer">
+                  {licenseInfo}
+                </a>
+              </div>
             ) : (
-              <>
+              <div className='grid gap-2'>
                 <div className="text-gray-900 dark:text-white">{licenseURI}</div>
                 <div className="text-gray-900 dark:text-white">{licenseInfo}</div>
-              </>
+              </div>
             )}
           </div>
         </div>
