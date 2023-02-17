@@ -90,6 +90,10 @@ export default function Home() {
           </Balancer>
           <CantBeEvilLicenseDialog />
           <ContractsInfo />
+          <a href="https://github.com/LegatoHQ/robotstxt-infra"
+            target="_blank"
+            rel="noreferrer"
+            className="flex gap-2 hover:underline hover:text-indigo-600" >github</a>
         </motion.p>
       </motion.div>
     </>

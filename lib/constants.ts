@@ -3,13 +3,13 @@ import { arbitrum, goerli, hardhat, mainnet, optimism, polygon, polygonMumbai, s
 // -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 // Application
 // -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-export const SITE_CANONICAL = 'https://turbo.district.dev'
+export const SITE_CANONICAL = 'https://robots-txt.xyz'
 export const SITE_EMOJI = '⚡'
-export const SITE_NAME = 'robotstxt.xyz'
-export const SITE_TITLE = 'robotstxt.xyz - default usage licenses for eth addresses'
+export const SITE_NAME = 'robots-txt'
+export const SITE_TITLE = 'Robots!- default usage licenses for eth addresses'
 export const SITE_DESCRIPTION = 'Declare a default license for any eth address you own.'
-export const SOCIAL_TWITTER = 'KamesGeraghty'
-export const SOCIAL_GITHUB = 'turbo-eth/template-web3-app'
+export const SOCIAL_TWITTER = 'legatomusicxyz'
+export const SOCIAL_GITHUB = 'LegatoHQ/robotstxt-infra'
 
 export const APP_CONFIG = {
   canonical: SITE_CANONICAL,
