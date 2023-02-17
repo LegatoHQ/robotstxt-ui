@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { getContractsFor } from '@/lib/actions/contractOptions'
+import { getContractsFor, getEtherscanUrl } from '@/lib/actions/contractOptions'
 import { useNetwork } from 'wagmi'
 
 export const ContractsInfo = () => {
@@ -8,16 +8,24 @@ export const ContractsInfo = () => {
   const { chain } = network
   const contracts = getContractsFor(chain?.id)
   return (
-    <div className='text-xs font-mono '>
+    <div className='text-sm grid gap-1 font-mono '>
       Contracts
-      <div className="flex gap-2">
+      <a
+      href={getEtherscanUrl(contracts,contracts.ROBOTS_TXT)}
+      target="_blank"
+      rel="noreferrer"
+       className="flex gap-2 hover:underline hover:text-indigo-600">
         <div className="uppercase">Robots.txt:</div>
         <div>{contracts.ROBOTS_TXT}</div>
-      </div>
-      <div className="flex gap-2">
+      </a>
+      <a
+      href={getEtherscanUrl(contracts,contracts.ROBOT_TOKEN)}
+      target="_blank"
+      rel="noreferrer"
+       className="flex gap-2 hover:underline hover:text-indigo-600">
         <div className="uppercase">Robot token:</div>
         <div>{contracts.ROBOT_TOKEN}</div>
-      </div>
+      </a>
       {/* <div className="flex gap-2 text-sm">
         <div className="uppercase">RPC:</div>
         <div>{chain?.rpcUrls.default.http}</div>
