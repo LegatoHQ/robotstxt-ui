@@ -31,6 +31,8 @@ export default function Home() {
   return (
     <>
       <Head />
+      <script async src="//static.getclicky.com/101398250.js"></script>
+      <noscript><p><img alt="Clicky" width="1" height="1" src="//in.getclicky.com/101398250ns.gif" /></p></noscript>
       {showConfetti && <Confetti />}
       <motion.div
         className="flex-center mx-auto flex w-full max-w-2xl flex-col gap-4 px-5"
