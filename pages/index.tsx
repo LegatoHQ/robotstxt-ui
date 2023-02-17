@@ -54,11 +54,19 @@ export default function Home() {
           <a
             href="https://legatohq.com"
             target="_blank"
-            className="mb-10 mt-0.5 w-full text-right text-base font-thin  tracking-[-0.02em] text-black drop-shadow-sm dark:text-white"
+            className="mb-10 mt-0.5 w-full text-right text-base font-thin  
+            tracking-[-0.02em] text-black drop-shadow-sm dark:text-white
+            hover:underline
+            "
             rel="noreferrer">
             by Legato Labs
           </a>
         </h1>
+      <a
+      href='https://docs.robots-txt.xyz' target="_blank" rel="noreferrer"
+       className="underline underline-offset-4 dark:text-white/50">
+        I don't get it. Explain!
+      </a>
         <ReadWriteToggle className="mx-auto" onChange={setActive} active={active} />
         <div className={cn({ hidden: active !== 'write' }, 'w-full')}>
           <WriteLicense

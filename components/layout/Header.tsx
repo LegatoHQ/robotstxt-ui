@@ -48,12 +48,13 @@ export function Header(props: Props) {
           <h1 className="text-gradient-sand ml-2 text-2xl font-bold">{SITE_NAME}</h1>
         </LinkComponent>
       </ResponsiveMobileAndDesktop>
-      <div className="flex-1" />
+      <div className="flex-1 items-start" />
 
       <div className="flex items-center gap-4">
         <BranchIsWalletConnected>
           <UserDropdown />
         </BranchIsWalletConnected>
+        
         <ThemeSwitcher />
       </div>
     </header>
