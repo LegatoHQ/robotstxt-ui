@@ -81,6 +81,7 @@ export default function Home() {
             target="_blank"
             rel="noreferrer"
             className="flex gap-2 underline hover:text-indigo-600" >Get in touch</a>
+           <div className='italic'>Note: Contracts are not audited!</div> 
         <motion.p
           className="mt-6 flex w-full flex-col items-center gap-2 text-center text-gray-500 dark:text-gray-200 "
           variants={FADE_DOWN_ANIMATION_VARIANTS}>
