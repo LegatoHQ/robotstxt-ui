@@ -22,8 +22,8 @@ export const polygonContractOptions: IContractOptions = {
 export const mainNetContractOptions: IContractOptions = {
   CHAIN_ID: 1,
   RPC: 'https://mainnet.infura.io/v3/c97ed77531d74d5287facb6404446a0b',
-  ROBOTS_TXT: '0x53F63a626B7218aDbDf71e87Fbd83C339feBa6e6',
-  ROBOT_TOKEN: '0x9D174aAB6ca9d0Aa07aEefab23cF52dF6F337Fa8',
+  ROBOTS_TXT: '0x4dadB439550541Ef483096A1316136F7b0d3086a',
+  ROBOT_TOKEN: '0x04491242E4015329B1088E162Bd91E3f9A38fD98',
 }
 export const allContractOptions: IContractOptions[] = [mumbaiContractOptions, polygonContractOptions, mainNetContractOptions]
 
