@@ -28,6 +28,8 @@ export default function Document() {
       <body>
         <Main />
         <NextScript />
+        <script async src="//static.getclicky.com/101398250.js"></script>
+<noscript><p><img alt="Clicky" width="1" height="1" src="//in.getclicky.com/101398250ns.gif" /></p></noscript>
       </body>
     </Html>
   )
