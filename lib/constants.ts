@@ -6,8 +6,8 @@ import { arbitrum, goerli, hardhat, mainnet, optimism, polygon, polygonMumbai, s
 export const SITE_CANONICAL = 'https://robots-txt.xyz'
 export const SITE_EMOJI = '⚡'
 export const SITE_NAME = 'robots-txt'
-export const SITE_TITLE = 'Robots!- default usage licenses for eth addresses'
-export const SITE_DESCRIPTION = 'Declare a default license for any eth address you own.'
+export const SITE_TITLE = 'Robots!- default usage licenses for NFTs'
+export const SITE_DESCRIPTION = 'Deployed an NFT? Declare a default usage license for it and let aggregators and users know what they can and cannot do with it.'
 export const SOCIAL_TWITTER = 'legatomusicxyz'
 export const SOCIAL_GITHUB = 'LegatoHQ/robotstxt-infra'
 
