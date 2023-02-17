@@ -10,20 +10,20 @@ export interface IContractOptions {
 export const mumbaiContractOptions: IContractOptions = {
   CHAIN_ID: 80001,
   RPC: 'https://crimson-dawn-layer.matic-testnet.discover.quiknode.pro/2f96338b3a272ff0801a885469489d340d782714',
-  ROBOTS_TXT: '0x14D7c7873dFAbc3a565CEe439dbf7336398687CC',
-  ROBOT_TOKEN: '0xB6ef53CE7A5cc4dDDaDA7B46e74d10837324E392',
+  ROBOTS_TXT: '0xF0D0E02a8d03B73ab42484CBe64f132222320bAA',
+  ROBOT_TOKEN: '0xB064eC859F47Eb08De00bfE920CF6DbcFd7537eb',
 }
 export const polygonContractOptions: IContractOptions = {
   CHAIN_ID: 137,
   RPC: 'https://polygon-mainnet.infura.io/v3/855f45a706ee4f5d8127b569538010d3',
-  ROBOTS_TXT: '0x65a4b530A8A456f7b372Db49cd3e1Fa0AF36bA5A',
-  ROBOT_TOKEN: '0x1451c783CecbEc3dFee498CD49E40C61f4337eE3',
+  ROBOTS_TXT: '0x6525b9e327F0cA32b75A0d05ec3d4F24B9b3dEFF',
+  ROBOT_TOKEN: '0x30DbB030E20a8Ce9Bd2794267f3fa9aD4d4ccBD1',
 }
 export const mainNetContractOptions: IContractOptions = {
   CHAIN_ID: 1,
   RPC: 'https://mainnet.infura.io/v3/c97ed77531d74d5287facb6404446a0b',
-  ROBOTS_TXT: '0x4dadB439550541Ef483096A1316136F7b0d3086a',
-  ROBOT_TOKEN: '0x04491242E4015329B1088E162Bd91E3f9A38fD98',
+  ROBOTS_TXT: '0xD0f552C39A4C0d7F14969e4f6dA84FA4f88A28e5',
+  ROBOT_TOKEN: '0x6F06f80AB36aEC196a87f31D5698A9e73C5163F2',
 }
 export const allContractOptions: IContractOptions[] = [mumbaiContractOptions, polygonContractOptions, mainNetContractOptions]
 
