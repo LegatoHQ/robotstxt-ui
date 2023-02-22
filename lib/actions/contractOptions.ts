@@ -18,8 +18,8 @@ export const mumbaiContractOptions: IContractOptions = {
 export const polygonContractOptions: IContractOptions = {
   CHAIN_ID: 137,
   RPC: 'https://polygon-mainnet.infura.io/v3/855f45a706ee4f5d8127b569538010d3',
-  ROBOTS_TXT: '0x6525b9e327F0cA32b75A0d05ec3d4F24B9b3dEFF',
-  ROBOT_TOKEN: '0x30DbB030E20a8Ce9Bd2794267f3fa9aD4d4ccBD1',
+  ROBOTS_TXT: '0xf4B81520651F33A42622174F31c2dD8F96D752Dc',
+  ROBOT_TOKEN: '0x4Bd206c4ed0fCfd998108b1D888929578c5b88a4',
   ETHERSCAN_URL: 'https://polygonscan.com/address/[ADDRESS]',
 } as const
 export const mainNetContractOptions: IContractOptions = {
