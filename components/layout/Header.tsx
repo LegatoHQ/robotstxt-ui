@@ -3,17 +3,20 @@ import React from 'react'
 import classNames from 'clsx'
 import Image from 'next/image'
 
-import { SITE_EMOJI, SITE_NAME } from '@/lib/constants'
+import { SITE_NAME } from '@/lib/constants'
 import useScroll from '@/lib/hooks/useScroll'
 
-import UserDropdown from './UserDropdown'
+import { getContractsFor } from '@/lib/actions/contractOptions'
+import * as Dialog from '@radix-ui/react-dialog'
+import { Oval } from 'react-loader-spinner'
+import { useAccount, useBalance, useNetwork } from 'wagmi'
 import { BranchColorMode } from '../branch/BranchColorMode'
-import BranchIsAuthenticated from '../branch/BranchIsAuthenticated'
 import BranchIsWalletConnected from '../branch/BranchIsWalletConnected'
 import ResponsiveMobileAndDesktop from '../responsive/ResponsiveMobileAndDesktop'
 import { LinkComponent } from '../shared/LinkComponent'
 import { ThemeSwitcher } from '../shared/ThemeSwitcher'
-import ButtonSIWELogin from '../siwe/ButtonSIWELogin'
+import { licensesOptions } from '../WriteLicense'
+import UserDropdown from './UserDropdown'
 
 interface Props {
   className?: string
@@ -31,6 +34,18 @@ export function Header(props: Props) {
     },
     'z-30 transition-all'
   )
+
+  const [showBalanceModal, setShowBalanceModal] = React.useState(false)
+
+  const account = useAccount()
+  const network = useNetwork()
+
+  const balance = useBalance({
+    address: account.address,
+    token: getContractsFor(network.chain?.id).ROBOT_TOKEN as `0x${string}`,
+    chainId: network.chain?.id,
+  })
+
   return (
     <header className={classes}>
       <ResponsiveMobileAndDesktop>
@@ -52,9 +67,53 @@ export function Header(props: Props) {
 
       <div className="flex items-center gap-4">
         <BranchIsWalletConnected>
-          <UserDropdown />
+          <button className="flex gap-4 cursor-pointer" onClick={() => setShowBalanceModal(true)}>
+            <Dialog.Root>
+              <Dialog.Trigger asChild>
+                <div title="🤖 Your robot token balance " className="flex font-semibold items-center gap-2 ">
+                  {balance.isLoading ? (
+                    <Oval
+                      height={16}
+                      width={16}
+                      color="#4fa94d"
+                      wrapperStyle={{}}
+                      wrapperClass=""
+                      visible={true}
+                      ariaLabel="oval-loading"
+                      secondaryColor="#4fa94d"
+                      strokeWidth={2}
+                      strokeWidthSecondary={2}
+                    />
+                  ) : (
+                    <img src="/logo.svg" alt="Robots!" className="h-5 w-5" />
+                  )}
+                  {balance.data?.formatted && <span>{balance.data.formatted}</span>}
+                </div>
+              </Dialog.Trigger>
+              <Dialog.Portal>
+                <Dialog.Overlay className="DialogOverlay" />
+                <Dialog.Content className="DialogContent" style={{ maxWidth: 420 }}>
+                  <div className="flex gap-2 items-center">
+                    <img src="/logo.svg" alt="Robots!" className="inline-block h-6 w-6" />
+                    <Dialog.Title className="text-xl">Your robot token balance</Dialog.Title>
+                  </div>
+                  <Dialog.Description className="DialogDescription">
+                    Crypto tokens are digital representations of interest in an asset or used to facilitate transactions on a blockchain. They are
+                    often confused with cryptocurrency because they are also tradeable and exchangeable.
+                  </Dialog.Description>
+                  <Dialog.Close asChild>
+                    <button className="IconButton cursor-pointer" aria-label="Close">
+                      X
+                    </button>
+                  </Dialog.Close>
+                </Dialog.Content>
+              </Dialog.Portal>
+            </Dialog.Root>
+
+            <UserDropdown />
+          </button>
         </BranchIsWalletConnected>
-        
+
         <ThemeSwitcher />
       </div>
     </header>

@@ -14,6 +14,8 @@ import { ReadWriteToggle } from '@/components/ReadWriteToggle'
 import { WriteLicense } from '@/components/WriteLicense'
 import { FADE_DOWN_ANIMATION_VARIANTS } from '@/lib/design'
 import { ContractsInfo } from '@/components/ContractsInfo'
+import { useBalance, useNetwork } from 'wagmi'
+import { getContractsFor, getEtherscanUrl } from '@/lib/actions/contractOptions'
 
 export default function Home() {
   const [active, setActive] = useState<'read' | 'write'>('read')
@@ -60,11 +62,9 @@ export default function Home() {
             by Legato Labs
           </a>
         </h1>
-      <a
-      href='https://docs.robots-txt.xyz' target="_blank" rel="noreferrer"
-       className="underline underline-offset-4 dark:text-white/50">
-        I don't get it. Explain!
-      </a>
+        <a href="https://docs.robots-txt.xyz" target="_blank" rel="noreferrer" className="underline underline-offset-4 dark:text-white/50">
+          I don't get it. Explain!
+        </a>
         <ReadWriteToggle className="mx-auto" onChange={setActive} active={active} />
         <div className={cn({ hidden: active !== 'write' }, 'w-full')}>
           <WriteLicense
@@ -77,11 +77,10 @@ export default function Home() {
         <div className={cn({ hidden: active !== 'read' }, 'w-full')}>
           <Read />
         </div>
-          <a href="https://legatohq.com/get-in-touch"
-            target="_blank"
-            rel="noreferrer"
-            className="flex gap-2 underline hover:text-indigo-600" >Get in touch</a>
-           <div className='italic'>Note: Contracts are not audited!</div> 
+        <a href="https://legatohq.com/get-in-touch" target="_blank" rel="noreferrer" className="flex gap-2 underline hover:text-indigo-600">
+          Get in touch
+        </a>
+        <div className="italic">Note: Contracts are not audited!</div>
         <motion.p
           className="mt-6 flex w-full flex-col items-center gap-2 text-center text-gray-500 dark:text-gray-200 "
           variants={FADE_DOWN_ANIMATION_VARIANTS}>
@@ -93,10 +92,13 @@ export default function Home() {
           </Balancer>
           <CantBeEvilLicenseDialog />
           <ContractsInfo />
-          <a href="https://github.com/LegatoHQ/robotstxt-infra"
+          <a
+            href="https://github.com/LegatoHQ/robotstxt-infra"
             target="_blank"
             rel="noreferrer"
-            className="flex gap-2 hover:underline hover:text-indigo-600" >github</a>
+            className="flex gap-2 hover:underline hover:text-indigo-600">
+            github
+          </a>
         </motion.p>
       </motion.div>
     </>

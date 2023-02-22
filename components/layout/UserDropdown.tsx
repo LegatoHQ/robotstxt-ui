@@ -52,12 +52,12 @@ export default function UserDropdown() {
         align="end"
         openPopover={openPopover}
         setOpenPopover={setOpenPopover}>
-        <button
+        <div
           // onClick={() => setOpenPopover(!openPopover)}
-          className="bg-card flex items-center justify-center overflow-hidden rounded-full p-2 px-4 transition-all duration-75 hover:bg-neutral-100 focus:outline-none active:scale-95 ">
+          className="bg-black/5 dark:bg-white/5 text-black  dark:text-white flex items-center justify-center overflow-hidden rounded-full p-2 px-4 transition-all duration-75 focus:outline-none">
           <WalletAddress truncate className="font-raleway font-semibold leading-4 tracking-[0.08em]" />
           <Wallet className="ml-3 h-6 w-6" />
-        </button>
+        </div>
       </Popover>
     </motion.div>
   )

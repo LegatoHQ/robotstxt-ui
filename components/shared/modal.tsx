@@ -73,7 +73,7 @@ export default function Modal({
   return (
     <AnimatePresence>
       {showModal && (
-        <FocusTrap focusTrapOptions={{ initialFocus: false }}>
+        <FocusTrap focusTrapOptions={{ initialFocus: false }} active={false}>
           <div className="absolute">
             <motion.div
               ref={mobileModalRef}

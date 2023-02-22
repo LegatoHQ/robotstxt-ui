@@ -11,27 +11,27 @@ export interface IContractOptions {
 export const mumbaiContractOptions: IContractOptions = {
   CHAIN_ID: 80001,
   RPC: 'https://crimson-dawn-layer.matic-testnet.discover.quiknode.pro/2f96338b3a272ff0801a885469489d340d782714',
-  ROBOTS_TXT: '0xF0D0E02a8d03B73ab42484CBe64f132222320bAA',
-  ROBOT_TOKEN: '0xB064eC859F47Eb08De00bfE920CF6DbcFd7537eb',
-  ETHERSCAN_URL:  'https://mumbai.polygonscan.com/address/[ADDRESS]',
-}
+  ROBOTS_TXT: '0x22bFb245BBde60Cef249C0Eb60Fb898e8214a310',
+  ROBOT_TOKEN: '0x471B5200Bf6C7AEBa606b67B92f897368134A67a',
+  ETHERSCAN_URL: 'https://mumbai.polygonscan.com/address/[ADDRESS]',
+} as const
 export const polygonContractOptions: IContractOptions = {
   CHAIN_ID: 137,
   RPC: 'https://polygon-mainnet.infura.io/v3/855f45a706ee4f5d8127b569538010d3',
   ROBOTS_TXT: '0x6525b9e327F0cA32b75A0d05ec3d4F24B9b3dEFF',
-  ROBOT_TOKEN:'0x30DbB030E20a8Ce9Bd2794267f3fa9aD4d4ccBD1' ,
-  ETHERSCAN_URL:  'https://polygonscan.com/address/[ADDRESS]',
-}
+  ROBOT_TOKEN: '0x30DbB030E20a8Ce9Bd2794267f3fa9aD4d4ccBD1',
+  ETHERSCAN_URL: 'https://polygonscan.com/address/[ADDRESS]',
+} as const
 export const mainNetContractOptions: IContractOptions = {
   CHAIN_ID: 1,
   RPC: 'https://mainnet.infura.io/v3/c97ed77531d74d5287facb6404446a0b',
-  ROBOTS_TXT: '0xD0f552C39A4C0d7F14969e4f6dA84FA4f88A28e5',
-  ROBOT_TOKEN: '0x6F06f80AB36aEC196a87f31D5698A9e73C5163F2',
-  ETHERSCAN_URL:  'https://etherscan.io/address/[ADDRESS]',
-}
+  ROBOTS_TXT: '0x0f915BcB200ec11C0274453CD3D9F71614063B4A',
+  ROBOT_TOKEN: '0x3b2AEb40ce5f323cA33d42D8c030abb17fF2E5ce',
+  ETHERSCAN_URL: 'https://etherscan.io/address/[ADDRESS]',
+} as const
 export const allContractOptions: IContractOptions[] = [mumbaiContractOptions, polygonContractOptions, mainNetContractOptions]
-export function getEtherscanUrl(chain:IContractOptions, address:string){
-  return chain.ETHERSCAN_URL.replace('[ADDRESS]',address)
+export function getEtherscanUrl(chain: IContractOptions, address: string) {
+  return chain.ETHERSCAN_URL.replace('[ADDRESS]', address)
 }
 
 export const getContractsFor = (chainId?: number): IContractOptions =>

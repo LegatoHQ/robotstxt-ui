@@ -8,21 +8,21 @@ export const ContractsInfo = () => {
   const { chain } = network
   const contracts = getContractsFor(chain?.id)
   return (
-    <div className='text-sm grid gap-1 font-mono '>
+    <div className="text-sm grid gap-1 font-mono ">
       Contracts
       <a
-      href={getEtherscanUrl(contracts,contracts.ROBOTS_TXT)}
-      target="_blank"
-      rel="noreferrer"
-       className="flex gap-2 hover:underline hover:text-indigo-600">
+        href={getEtherscanUrl(contracts, contracts.ROBOTS_TXT)}
+        target="_blank"
+        rel="noreferrer"
+        className="flex flex-wrap gap-2 hover:underline hover:text-indigo-600">
         <div className="uppercase">Robots.txt:</div>
         <div>{contracts.ROBOTS_TXT}</div>
       </a>
       <a
-      href={getEtherscanUrl(contracts,contracts.ROBOT_TOKEN)}
-      target="_blank"
-      rel="noreferrer"
-       className="flex gap-2 hover:underline hover:text-indigo-600">
+        href={getEtherscanUrl(contracts, contracts.ROBOT_TOKEN)}
+        target="_blank"
+        rel="noreferrer"
+        className="flex flex-wrap  gap-2 hover:underline hover:text-indigo-600">
         <div className="uppercase">Robot token:</div>
         <div>{contracts.ROBOT_TOKEN}</div>
       </a>
