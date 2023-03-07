@@ -7,7 +7,8 @@ export const SITE_CANONICAL = 'https://robots-txt.xyz'
 export const SITE_EMOJI = '⚡'
 export const SITE_NAME = 'robots-txt'
 export const SITE_TITLE = 'Robots!- default usage licenses for NFTs'
-export const SITE_DESCRIPTION = 'Deployed an NFT? Declare a default usage license for it and let aggregators and users know what they can and cannot do with it.'
+export const SITE_DESCRIPTION =
+  'Deployed an NFT? Declare a default usage license for it and let aggregators and users know what they can and cannot do with it.'
 export const SOCIAL_TWITTER = 'legatomusicxyz'
 export const SOCIAL_GITHUB = 'LegatoHQ/robotstxt-infra'
 
@@ -45,6 +46,6 @@ sepolia.iconUrl = '/icons/NetworkEthereumTest.svg'
 
 export const ETH_CHAINS = [mainnet, polygon, optimism, arbitrum, goerli]
 // export const ETH_CHAINS_PROD = [mainnet, polygon, optimism, arbitrum]
-export const ETH_CHAINS_PROD = [polygonMumbai, mainnet, polygon, optimism, arbitrum]
+export const ETH_CHAINS_PROD = [mainnet, polygon]
 // export const ETH_CHAINS_TEST = [polygonMumbai, polygon, optimism, arbitrum, goerli, sepolia, hardhat]
 export const ETH_CHAINS_TEST = [mainnet, polygon, polygonMumbai]
